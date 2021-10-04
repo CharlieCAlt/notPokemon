@@ -6,7 +6,7 @@ class CreateTables:
     CREATE TABLE IF NOT EXISTS Pokedex (
     ID INT PRIMARY KEY,
     Name VARCHAR(20),
-    Artwork VARCHAR(50),
+    Artwork VARCHAR(100),
     Attack INT,
     Defense INT,
     Type VARCHAR(20),
