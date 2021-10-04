@@ -9,7 +9,7 @@ class CreateTables:
     Artwork VARCHAR(100),
     Attack INT,
     Defense INT,
-    Type VARCHAR(20),
+    Types VARCHAR(20),
     UNIQUE(ID, Name)
     )'''
     cursor.execute(createPokedex)
