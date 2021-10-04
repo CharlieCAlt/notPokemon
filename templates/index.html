@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+<div class="container body-content">
+    <div class="jumbotron">
+        <h1>BusBoard</h1>
+        <p class="lead">For all your bus info needs. Enter a postcode below and click enter to see bus times for that location.</p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="messageForm" action="/busInfo" method="get">
+                <fieldset>
+                    <legend>Postcode: </legend>
+                    <input type="text" name="postcode">
+                    <input type="submit" value="Get Bus Info" />
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

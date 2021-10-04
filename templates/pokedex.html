@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+<div class="container body-content">
+    <div class="jumbotron">
+        <h1>Pokedex</h1>
+        <p class="lead"></p>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form id="messageForm" action="/donwloadData" method="get">
+                <fieldset>
+                    <legend></legend>
+                    <input type="submit" value="Download data" />
+                </fieldset>
+            </form>
+            <br>
+            <form action="/choosePokemon">
+              <label for="pokemons">Choose a pokemon:</label>
+              <select name="pokemons" id="pokemons">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="opel">Opel</option>
+                <option value="audi">Audi</option>
+              </select>
+              <br><br>
+              <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

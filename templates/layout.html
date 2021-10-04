@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}BusBoard{% endblock %}</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <a class="navbar-brand" href="/">BusBoard</a>
+</nav>
+
+<div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
