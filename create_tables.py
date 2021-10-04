@@ -9,8 +9,10 @@ class CreateTables:
     Artwork VARCHAR(50),
     Attack INT,
     Defense INT,
-    Type VARCHAR(20)
+    Type VARCHAR(20),
     UNIQUE(ID, Name)
     )'''
     cursor.execute(createPokedex)
     conn.commit()
+
+test = CreateTables
