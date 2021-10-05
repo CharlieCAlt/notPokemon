@@ -1,5 +1,10 @@
-# Testing for the new repoitory
+from create_tables import Database
+import pokemon_download
 
-# https://pokeapi.co/api/v2/pokemon/ditto
+def main():
+    database = Database()
+    database.CreateTables()
+    pokemon_download.getPokemon(database)
 
-# Testing commit uploads
+if __name__ == '__main__':
+    main()
