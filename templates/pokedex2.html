@@ -1,13 +1,18 @@
 <html>
 <head>
-    <link rel="stylesheet" href="static/card2.css">
+  <link rel="stylesheet" href="static/card2.css">
+  <title> Pokedex</title>
 </head>
+
+<body>
 
 
 <main id=app>
 
+<form id="messageForm" action="/downloadPokemons" method="get">
+        <input type="submit" value="Download Pokemons" />
+</form>
 
-  <h1>Pokedex</h1>
 
   <section class="cards">
     <div class="card charizard animated"></div>
@@ -32,3 +37,5 @@
   </section>
 
 </main>
+
+</body>

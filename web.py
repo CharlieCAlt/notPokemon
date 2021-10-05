@@ -1,24 +1,21 @@
 from flask import Flask, render_template, request
-from create_tables import CreateTables
+from create_tables import Database
+import pokemon_download
 
 app = Flask(__name__)
 
-database = CreateTables()
+database = Database()
 
 @app.route("/")
 def pokedex():
     return render_template('pokedex2.html')
 
-'''
 
-@app.route("/displayPokemons")
-def display_pokemons():
-    # get pokemons from database
-    getPokemon()
-    pokemons = get_pokemons(book_title)
-    pokemon_list = pokemons.values.tolist()
-    return render_template('info.html', pokemons=pokemon_list)
+@app.route("/downloadPokemons")
+def download_pokemons():
+    database.CreateTables()
+    pokemon_download.getPokemon(database)
+    return render_template('pokedex2.html')
     
-'''
 
 if __name__ == "__main__": app.run()
