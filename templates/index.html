@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron">
+        <h1>Pokemon</h1>
+        <p class="lead">Welcome to the high octane, massively popular, ultra thrilling card game known as Pokemon,
+            a game of the year contender 5 times in a row. Keeping kids off the street since 1996, almost as addicting
+            as crack cocaine, you too can enjoy this perfectly coded game with no bugs! Click on the Pokeball to start
+            your journey, or the Pokedex to visit the Pokedex!</p>
+    </div>
+    <head>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .column {
+      float: left;
+      width: 50%;
+      padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    </style>
+    </head>
+    <div class="row">
+      <div class="column">
+          <a href="/game">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt="Pokeball"
+             style="width:200px;height:200px">
+              </a>
+      </div>
+      <div class="column">
+          <a href="/pokedex">
+        <img src="https://studio.cults3d.com/E7X8p_WgxRa_7GtfclTQKlRBr60=/https://files.cults3d.com/uploaders/17005797/illustration-file/6eb62675-dd55-4ca7-88b5-7942db7a4408/Pokedax.jpg" alt="Pokedex"
+             style="width:200px;height:200px">
+          </a>
+      </div>
+    </div>
+</div>
+{% endblock %}
