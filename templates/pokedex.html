@@ -17,15 +17,14 @@
         </fieldset>
     </form>
     <br>
-    <form action="/choosePokemon">
+    <form action="/show_pokemons">
       <label for="pokemons">Choose a pokemon:</label>
-      <select name="pokemons" id="pokemons">
-        <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="opel">Opel</option>
-        <option value="audi">Audi</option>
+    {% for item in names %}
+      <select name="names" id="pokemons">
+        <option value={{item}}>{{item}}</option>
       </select>
-      <br><br>
+    {% endfor %}
+        <br><br>
       <input type="submit" value="Submit">
     </form>
 

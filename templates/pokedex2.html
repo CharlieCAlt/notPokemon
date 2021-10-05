@@ -1,6 +1,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="static/card2.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> Pokedex</title>
 </head>
 
@@ -13,13 +14,32 @@
         <input type="submit" value="Download Pokemons" />
 </form>
 
+<div class="popup" onclick="myFunction()">Click me to toggle the popup!
+  <span class="popuptext" id="myPopup">A Simple Popup!</span>
+</div>
 
-  <section class="cards">
-    <div class="card charizard animated"></div>
-    <div class="card pika animated"></div>
-    <div class="card eevee animated"></div>
-    <div class="card mewtwo animated"></div>
-  </section>
+<label>Choose a pokemon:</label>
+  <select name="names">
+    {% for item in names %}
+    <option value="{{item[1]}}">{{item}}</option>
+    {% endfor %}
+  </select>
+
+
+<script>
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
+
+
+<section class="cards">
+  <div class="card charizard animated"></div>
+  <div class="card pika animated"></div>
+  <div class="card eevee animated"></div>
+  <div class="card mewtwo animated"></div>
+</section>
 
 
 

@@ -1,3 +1,4 @@
+import pandas as pd
 import sqlite3
 from sqlite3 import Error
 
@@ -15,7 +16,7 @@ class Database:
         self.cursor.close()
         self.conn.close()
 
-    def CreateTables(self):
+    def createTables(self):
         createPokedex = '''
         CREATE TABLE IF NOT EXISTS Pokedex (
         ID INT PRIMARY KEY,
@@ -43,3 +44,12 @@ class Database:
         """
         self.cursor.execute(addition, input_data)
         self.conn.commit()
+
+    def returnNames(self):
+        names = f"""
+        SELECT Name 
+        FROM Pokedex
+        """
+        df = pd.read_sql_query(names, self.conn)
+        return df
+
