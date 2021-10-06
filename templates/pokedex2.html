@@ -7,54 +7,48 @@
 
 <body>
 
+<h1 style = "background-color:Tomato;"> Pokedex</h1>
+
 
 <main id=app>
 
+
 <form id="messageForm" action="/downloadPokemons" method="get">
-        <input type="submit" value="Download Pokemons" />
+    <input type="submit" value="Download Pokemons" onclick="alertMessage()" />
 </form>
 
-<div class="popup" onclick="myFunction()">Click me to toggle the popup!
-  <span class="popuptext" id="myPopup">A Simple Popup!</span>
-</div>
 
+<script>
+function alertMessage() {
+  if ("{{alert}}" == "Do you want to override pokemon data?") {
+  window.alert("{{alert}}");
+  }
+}
+</script>
+
+<br>
+
+<form action="/showPokemons" method="get">
 <label>Choose a pokemon:</label>
-  <select name="names">
+  <select name="name">
     {% for item in names %}
     <option value="{{item[0]}}">{{item[0]}}</option>
     {% endfor %}
   </select>
+<input type="submit">
+</form>
 
-
-<script>
-function myFunction() {
-  var popup = document.getElementById("myPopup");
-  popup.classList.toggle("show");
-}
-</script>
-
+<style class="hover"></style>
 
 <section class="cards">
-  <div class="card charizard animated"></div>
-  <div class="card pika animated"></div>
-  <div class="card eevee animated"></div>
-  <div class="card mewtwo animated"></div>
+  <div class="card animated">
+    <p> {{name}}</p>
+    <img src="{{art}}">
+    <p> Attack: {{attack}} </p>
+    <p> Defense: {{defense}} </p>
+    <p> Type: {{type}} </p>
+  </div>
 </section>
-
-
-
-
-
-
-  <style class="hover"></style>
-
-  <section class="demo">
-    <div class="card"></div>
-    <span class="operator">+</span>
-    <div class="card"><span>color-dodge</span></div>
-    <span class="operator">+</span>
-    <div class="card"><span>color-dodge</span></div>
-  </section>
 
 </main>
 

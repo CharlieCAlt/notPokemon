@@ -53,3 +53,25 @@ class Database:
         df = pd.read_sql_query(names, self.conn)
         return df
 
+    def getArt(self, name):
+        art = f"""
+        SELECT Artwork
+        FROM Pokedex
+        WHERE Name = ? """
+        df = pd.read_sql_query(art, self.conn, params=(name,))
+        return df
+
+    def getAll(self, name):
+        data = f"""
+        SELECT * 
+        FROM Pokedex 
+        WHERE name = ? """
+        df = pd.read_sql_query(data, self.conn, params=(name,))
+        return df
+
+    def delete_table(self):
+        query = f"""DROP TABLE Pokedex"""
+        self.cursor.execute(query)
+        self.conn.commit()
+
+
