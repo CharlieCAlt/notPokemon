@@ -13,6 +13,7 @@ def main():
     deck = Deck()
     answer = deck.shuffle()
     deck_a, deck_b = answer
+    print(deck_a)
 
 if __name__ == '__main__':
     main()
