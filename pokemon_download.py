@@ -4,7 +4,7 @@ class Pokemon:
     """ A Pokemon with Name, Artwork, Attack, Defense and Type stored for database input"""
 
     def __init__(self, name, artwork, attack, defense, types):
-        self.__name=name
+        self.__name = name
         self.__artwork = artwork
         self.__attack = attack
         self.__defense = defense
@@ -47,7 +47,3 @@ def getPokemon(database):
             database.addPokemon(input_data)
         else:
             pass
-
-
-if __name__ == '__main__':
-    getPokemon()
