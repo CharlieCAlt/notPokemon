@@ -1,0 +1,46 @@
+{% extends "game_layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-warning">
+        <h1>Pokemon: The Game</h1>
+        <p class="lead">Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life. Try not to rage quit</p>
+    </div>
+    <head>
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    .column {
+      float: left;
+      width: 50%;
+      padding: 5px;
+    }
+    /* Clearfix (clear floats) */
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+    </style>
+    </head>
+    </div>
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-primary">
+        <h1>Game Window</h1>
+        <p class="lead">Just a little old window for where the deck and things might go. I'm not sure yet<br> I haven't decided.</p>
+                  <a href="/game">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Pokebola-pokeball-png-0.png" alt="Pokeball"
+             style="width:10px;height:10px">
+                  </a>
+    </div>
+</div>
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-success">
+        <h1>Game Rules</h1>
+        <p class="lead">You will be playing against an AI opponent. <br> Each player has a deck of pokemon, equally split between them. <br>
+            The aim is to eliminate </p>
+    </div>
+</div>
+{% endblock %}
