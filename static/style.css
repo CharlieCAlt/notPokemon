@@ -3,6 +3,10 @@ body {
     background-color = #808080
 }
 
+img {
+width: 150px;
+}
+
 
 :root {
   --color1: rgb(0, 231, 255);
@@ -21,8 +25,6 @@ body {
   --mewtwo2: #acc6f8;
   --mewtwofront: url(https://assets.codepen.io/13471/mewtwo-gx.webp);
 }
-
-
 
 .card {
 

@@ -1,71 +1,61 @@
-
-<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="static/card2.css">
-    <title>Pokedex</title>
+  <link rel="stylesheet" href="static/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokedex</title>
 </head>
+<style>
+img {
+max-width: 100%;
+height: auto;
+}
+</style>
+
 <body>
 
+<h1 style = "background-color:Tomato;"> Pokedex</h1>
+
+
+<main id=app>
+
+
+<form id="messageForm" action="/downloadPokemons" method="get">
+    <input type="submit" value="Download Pokemons" onclick="alertMessage()" />
+</form>
+
+
+<script>
+function alertMessage() {
+  if ("{{alert}}" == "Do you want to override pokemon data? If yes, click Download Pokemons again") {
+  window.alert("{{alert}}");
+  }
+}
+</script>
+
+<br>
+
+<form action="/showPokemons" method="get">
+<label>Choose a pokemon:</label>
+  <select name="name">
+    {% for item in names %}
+    <option value="{{item[0]}}">{{item[0]}}</option>
+    {% endfor %}
+  </select>
+<input type="submit">
+</form>
+
+<style class="hover"></style>
+
+<section class="cards">
+  <div class="card animated">
+    <p> {{name}}</p>
+    <img src="{{art}}">
+    <p> Attack: {{attack}} </p>
+    <p> Defense: {{defense}} </p>
+    <p> Type: {{type}} </p>
+  </div>
+</section>
+
+</main>
 
 </body>
-</html>
-    <form id="messageForm" action="/downloadData" method="get">
-        <fieldset>
-            <legend></legend>
-            <input type="submit" value="Download data" />
-        </fieldset>
-    </form>
-    <br>
-    <form action="/show_pokemons">
-      <label for="pokemons">Choose a pokemon:</label>
-    {% for item in names %}
-      <select name="names" id="pokemons">
-        <option value={{item}}>{{item}}</option>
-      </select>
-    {% endfor %}
-        <br><br>
-      <input type="submit" value="Submit">
-    </form>
-
-        <div id="cards">
-
-        <figure class="card card--normal">
-
-          <figcaption class="card__caption">
-            <h1 class="card__name">Eevee</h1>
-
-            <h3 class="card__type">
-              normal
-            </h3>
-
-            <table class="card__stats">
-              <tbody><tr>
-                <th>HP</th>
-                <td>55</td>
-              </tr>
-              <tr>
-                <th>Attack</th>
-                <td>55</td>
-              </tr>
-
-              <tr>
-                <th>Defense</th>
-                <td>50</td>
-              </tr>
-
-              <tr>
-                <th>Special Attack</th>
-                <td>45</td>
-              </tr>
-              <tr>
-                <th>Special Defense</th>
-                <td>65</td>
-              </tr>
-              <tr>
-                <th>Speed</th>
-                <td>55</td>
-              </tr>
-            </tbody></table>
-        </div>
-</div>
