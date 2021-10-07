@@ -1,10 +1,11 @@
 {% extends "game_layout.html" %}
 {% block title %}Home page{% endblock %}
 {% block content %}
+
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-warning text-center" id="home">
         <h1>Pokemon: The Game</h1>
-        <p class="lead">Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life. Try not to rage quit</p>
+        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life. Try not to rage quit</p>
     </div>
     <head>
     <style>
@@ -36,45 +37,35 @@
     </style>
     </head>
     </div>
-<div class="container body-content" xmlns="http://www.w3.org/1999/html">
-<!--    <div class="jumbotron bg-primary">-->
-<!--        <h1>Game Window</h1>-->
-<!--        <p class="lead">Just a little old window for where the deck and things might go. I'm not sure yet<br> I haven't decided.</p>-->
-<!--                  <a href="/">-->
-<!--        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="Pokemon"-->
-<!--             style="width:50px;height:50px">-->
-<!--                  </a>-->
-<!--    </div>-->
-    <div class = "jumbotron bg-primary">
-        <canvas id="myCanvas" height="300" style="border:1px solid #333;"></canvas>
-<!--    Insert Pokedex card templates here. The Pokemon being shown will change with the next button when that is added        -->
-    </div>
-</div>
-'{{ python script}}'
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-lg-3">
             <div class="card bg-primary text-white">
                 <div class="card-block text-center">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"/>
-                    <h3 class="card-title text-center"> Oh my lawd</h3>
-                    <p class="text-center"> It's a pokemon </p>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_a[0]}}.png"/>
+                    <h3 class="card-title text-center"> {{name}}</h3>
+                    <p class="text-center"> Attack: {{attack}}</p>
+                    <p class="text-center"> Defense: {{defense}}</p>
+                    <p class="text-center"> Types: {{types}}</p>
+                    <a href="/" class="btn btn-secondary"> Testing</a>
                 </div>
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
             <div class="card bg-danger">
                 <div class="card-block text-center">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png"/>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_a[1]}}.png"/>
                     <h3 class="card-title text-center"> Oh my lawd</h3>
                     <p class="text-center"> It's a pokemon </p>
+                    <a href="/game" class="btn btn-warning"> Testing</a>
                 </div>
             </div>
         </div>
         <div class="col-md-6 col-lg-3">
             <div class="card">
                 <div class="card-block text-center">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"/>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_b[0]}}.png"/>
                     <h3 class="card-title text-center"> Oh my lawd</h3>
                     <p class="text-center"> It's a pokemon </p>
                     <a href="/test" class="btn btn-primary">Go Play</a>
@@ -84,15 +75,17 @@
         <div class="col-md-6 col-lg-3">
             <div class="card">
                 <div class="card-block text-center">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png"/>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_b[1]}}.png"/>
                     <h3 class="card-title text-center"> Oh my lawd</h3>
                     <p class="text-center"> It's a pokemon </p>
-                    <a href="/" class="btn btn-primary">Go Home</a>
+                    <a href="/game" class="btn btn-primary">Go Home</a>
                 </div>
             </div>
         </div>
     </div>
+<div style="margin:10px;">
 
+</div>
 </div>
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-success text-white text-center">
@@ -102,18 +95,5 @@
     </div>
 </div>
 
-<script>
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-ctx.fillStyle = "#FF0000";
-ctx.fillRect(5,5,150,75);
-ctx.fillRect(5, 85, 55, 45);
-</script>
-<script>
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.font = "20px Arial";
-ctx.fillText("Who's that Pokemon?", 5, 250);
-</script>
 
 {% endblock %}
