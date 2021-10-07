@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect
 from create_deck import Deck
-import game_page
+from create_tables import Database
 
 app = Flask(__name__)
 
@@ -12,13 +12,15 @@ def index():
 def game():
     deck=Deck()
     deck_a, deck_b = deck.shuffle()
-    values = game_page.pokemon_data(deck_a)
-    name, attack, defense, types = values
-    print(values)
     if len(deck_a) < 1:
         return redirect("/")
     else:
-        return render_template('game_template.html', deck_a = deck_a, deck_b=deck_b, name=name, attack=attack, defense=defense, types=types)
+        database = Database()
+        values = database.pokemonData(deck_a)
+        values2 = database.pokemonData(deck_b)
+        name, attack, defense, types = values
+        name2, attack2, defense2, types2 = values2
+        return render_template('game_template.html', deck_a = deck_a, deck_b=deck_b, name=name, attack=attack, defense=defense, types=types, name2=name2, attack2 = attack2, defense2 = defense2, types2 = types2)
 
 @app.route("/test")
 def test():

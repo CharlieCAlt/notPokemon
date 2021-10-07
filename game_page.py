@@ -11,11 +11,15 @@ except Error as e:
     raise e
 cursor = conn.cursor()
 
-
 class GamMan:
 
     def __init__(self):
-        pass
+        try:
+            self.conn = sqlite3.connect('pokedex.db', check_same_thread=False)
+        except Error as e:
+            print(e)
+            raise e
+        self.cursor = self.conn.cursor()
 
     def checkData(self):
         deck=Deck()
@@ -26,16 +30,8 @@ class GamMan:
         else:
             return render_template('game_template.html')
 
-#
-# deck = Deck()
-# deck_a, deck_b = deck.shuffle()
-#
-# print(deck_a)
-
-def pokemon_data(deck_a):
-    pokemon_find = deck_a[0]
-    pokemon_find = str(pokemon_find)
-    print(type(pokemon_find))
+def pokemon_data(deck):
+    pokemon_find = deck[0]
     find_pokemon = """
         SELECT Name, Attack, Defense, Types
         FROM Pokedex
@@ -44,8 +40,3 @@ def pokemon_data(deck_a):
     cursor.execute(find_pokemon, (pokemon_find,))
     data = cursor.fetchone()
     return data
-
-# print(pokemon_data())
-# answer=pokemon_data()
-# name, attack, defense, types = answer
-# print(name)
