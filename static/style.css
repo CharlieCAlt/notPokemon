@@ -429,3 +429,6 @@ h1 {
   }
 }
 
+.hidden-div {
+    display:none
+}

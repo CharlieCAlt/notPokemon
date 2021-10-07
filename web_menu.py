@@ -39,7 +39,7 @@ def show_pokemons():
     name = request.args.get('name')
     data = database.getAll(name)
     data_list = data.values.tolist()
-    return render_template('pokedex.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
+    return render_template('card.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
                            attack=data_list[0][3], defense=data_list[0][4], type=data_list[0][5])
 
 if __name__ == "__main__": app.run()
