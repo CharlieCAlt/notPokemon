@@ -19,8 +19,22 @@
 
  img {
     width: auto;
-    height: auto:
+    height: auto;
+    object-fit: cover;
+    object-postion: 100% 0;
+}
+
+.crop {
+        width: 200px;
+        height: 130px;
+        overflow: hidden;
     }
+
+.crop img {
+    width: 200px;
+    height: 130px;
+    margin: 0px 0 0 20px;
+}
 
 .card {
 
@@ -355,11 +369,19 @@ h1 {
   display: block;
   margin: 30px 0;
 }
-p {
+.card p {
   margin-top: 5px;
   font-weight: 200;
   color: green;
-  font-size:calc(25px + 0.1vw);
+  font-size:calc(20px + 0.1vw);
+  font-family: card;
+
+}
+
+@font-face {
+  font-family: card;
+  src: url(https://fonts.google.com/specimen/Lobster#standard-styles);
+}
 
 }
 #app {
