@@ -1,6 +1,5 @@
 from flask import Flask, render_template, redirect
 from create_deck import Deck
-from game_page import GamMan
 
 app = Flask(__name__)
 

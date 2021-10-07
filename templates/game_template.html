@@ -1,9 +1,8 @@
 {% extends "game_layout.html" %}
 {% block title %}Home page{% endblock %}
 {% block content %}
-
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
-    <div class="jumbotron bg-warning">
+    <div class="jumbotron bg-warning text-center" id="home">
         <h1>Pokemon: The Game</h1>
         <p class="lead">Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life. Try not to rage quit</p>
     </div>
@@ -23,28 +22,98 @@
       clear: both;
       display: table;
     }
+    canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+    position:relative;
+    width: 95%;
+    }
     </style>
     </head>
     </div>
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
-    <div class="jumbotron bg-primary">
-        <h1>Game Window</h1>
-        <p class="lead">Just a little old window for where the deck and things might go. I'm not sure yet<br> I haven't decided.</p>
-                  <a href="/">
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" alt="Pokemon"
-             style="width:50px;height:50px">
-                  </a>
-    </div>
-    <div class ="jumbotron bg-warning">
-        <canvas id="myCanvas" width="600" height="200" style="border:1px solid #000000;"></canvas>
+<!--    <div class="jumbotron bg-primary">-->
+<!--        <h1>Game Window</h1>-->
+<!--        <p class="lead">Just a little old window for where the deck and things might go. I'm not sure yet<br> I haven't decided.</p>-->
+<!--                  <a href="/">-->
+<!--        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png" alt="Pokemon"-->
+<!--             style="width:50px;height:50px">-->
+<!--                  </a>-->
+<!--    </div>-->
+    <div class = "jumbotron bg-primary">
+        <canvas id="myCanvas" height="300" style="border:1px solid #333;"></canvas>
+<!--    Insert Pokedex card templates here. The Pokemon being shown will change with the next button when that is added        -->
     </div>
 </div>
+'{{ python script}}'
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="card bg-primary text-white">
+                <div class="card-block text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png"/>
+                    <h3 class="card-title text-center"> Oh my lawd</h3>
+                    <p class="text-center"> It's a pokemon </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card bg-danger">
+                <div class="card-block text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/100.png"/>
+                    <h3 class="card-title text-center"> Oh my lawd</h3>
+                    <p class="text-center"> It's a pokemon </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-block text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png"/>
+                    <h3 class="card-title text-center"> Oh my lawd</h3>
+                    <p class="text-center"> It's a pokemon </p>
+                    <a href="/test" class="btn btn-primary">Go Play</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-block text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/50.png"/>
+                    <h3 class="card-title text-center"> Oh my lawd</h3>
+                    <p class="text-center"> It's a pokemon </p>
+                    <a href="/" class="btn btn-primary">Go Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
-    <div class="jumbotron bg-success">
+    <div class="jumbotron bg-success text-white text-center">
         <h1>Game Rules</h1>
         <p class="lead">You will be playing against an AI opponent. <br> Each player has a deck of pokemon, equally split between them. <br>
             The aim is to take all of the cards from your opponent, completing your pokedex. </p>
     </div>
-
 </div>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "#FF0000";
+ctx.fillRect(5,5,150,75);
+ctx.fillRect(5, 85, 55, 45);
+</script>
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "20px Arial";
+ctx.fillText("Who's that Pokemon?", 5, 250);
+</script>
+
 {% endblock %}

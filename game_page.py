@@ -15,3 +15,6 @@ class GamMan:
             return redirect("/")
         else:
             return render_template('game_template.html')
+
+
+    
