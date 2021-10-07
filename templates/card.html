@@ -1,3 +1,6 @@
+{% extends "layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
 <html>
 <head>
   <link rel="stylesheet" href="static/style.css?id=1234">
@@ -10,7 +13,11 @@
 
 <body>
 
-<h1> Pokedex</h1>
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-warning text-center" id="home">
+        <h1>Pokedex</h1>
+    </div>
+</div>
 
 
 <main id=app>
@@ -78,3 +85,4 @@ function showDiv() {
 </main>
 
 <body/>
+{% endblock %}
