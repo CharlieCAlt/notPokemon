@@ -4,6 +4,12 @@
 <html>
 <head>
   <link rel="stylesheet" href="static/style.css?id=1234">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata&effect=fire-animation|neon|anaglyph|3d"> >
+   <style>
+      card {
+      font-family: 'Inconsolata', serif;
+      }
+    </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -27,7 +33,8 @@
     <input type="submit" value="Download Pokemons" onclick="alertMessage(); hideDiv()" />
 </form>
 </div>
-
+<script src="script.js">
+</script>
 <script>
 function alertMessage() {
   if ("{{alert}}" == "Do you want to override pokemon data? If yes, click Download Pokemons again") {
@@ -71,14 +78,22 @@ function showDiv() {
 <div id="show">
 <section class="cards">
   <div class="card animated" >
+    <div class = "font-effect-3d">
     <h1> {{name}}</h1>
+    </div>
     <div class ="crop">
       <img src="{{art}}">
     </div>
-    <p> Attack: {{attack}} </p>
+    <div class="font-effect-fire-animation">
+    <p color="red"> Attack: {{attack}} </p>
+     </div>
+    <div class="font-effect-neon">
     <p> Defense: {{defense}} </p>
+      </div>
+    <div class="font-effect-anaglyph">
     <p> Type: {{type}} </p>
-  </div>
+    </div>
+    </div>
 </section>
 </div>
 

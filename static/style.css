@@ -25,23 +25,23 @@
 }
 
 .crop {
-        width: 200px;
-        height: 130px;
+        width: 220px;
+        height: 180px;
         overflow: hidden;
     }
 
 .crop img {
-    width: 200px;
-    height: 130px;
-    margin: 0px 0 0 20px;
+    width: 220px;
+    height: 180px;
+    margin: -10px 0 0 20px;
 }
 
 .card {
-
-  width: 11vw;
-  height: 20vw;
-  min-width: 250px;
-  min-height: 350px;
+  border:5px solid white;
+  width: 14vw;
+  height: 23vw;
+  min-width: 280px;
+  min-height: 400px;
     // width: clamp(200px, 61vh, 18vw);
     // height: clamp(280px, 85vh, 25.2vw);
   @media screen and (min-width: 600px) {
@@ -52,9 +52,6 @@
     width: clamp(12.9vw, 61vh, 18vw);
     height: clamp(18vw, 85vh, 25.2vw);
 
-    img {
-    width: 150px
-    }
   }
 
   position: relative;
@@ -151,7 +148,6 @@
 }
 
 .card:after {
-  opacity: 1;
   background-image: url("https://assets.codepen.io/13471/sparkles.gif"),
     url(https://assets.codepen.io/13471/holo.png),
     linear-gradient(125deg, #ff008450 15%, #fca40040 30%, #ffff0030 40%, #00ff8a20 60%, #00cfff40 70%, #cc4cfa50 85%);
@@ -369,19 +365,23 @@ h1 {
   display: block;
   margin: 30px 0;
 }
-.card p {
-  margin-top: 5px;
-  font-weight: 200;
-  color: green;
-  font-size:calc(20px + 0.1vw);
-  font-family: card;
-
-}
 
 @font-face {
   font-family: card;
-  src: url(https://fonts.google.com/specimen/Lobster#standard-styles);
+  src: url('myfont.woff2');
 }
+
+@import url("https://fonts.googleapis.com/css?family=Tangerine");
+
+.card p {
+  margin-top: 5px;
+  font-family: 'Tangerine', serif;
+  font-weight: 200;
+  color: green;
+  font-size:calc(20px + 0.1vw);
+
+}
+
 
 }
 #app {
