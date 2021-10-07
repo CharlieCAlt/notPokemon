@@ -1,19 +1,16 @@
 <html>
 <head>
-  <link rel="stylesheet" href="static/style.css">
+  <link rel="stylesheet" href="static/style.css?id=1234">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Pokedex</title>
 </head>
-<style>
-img {
-max-width: 100%;
-height: auto;
-}
-</style>
 
 <body>
 
-<h1 style = "background-color:Tomato;"> Pokedex</h1>
+<h1> Pokedex</h1>
 
 
 <main id=app>
@@ -47,7 +44,7 @@ function alertMessage() {
 <style class="hover"></style>
 
 <section class="cards">
-  <div class="card animated">
+  <div class="card animated" >
     <p> {{name}}</p>
     <img src="{{art}}">
     <p> Attack: {{attack}} </p>
@@ -58,4 +55,4 @@ function alertMessage() {
 
 </main>
 
-</body>
+<body/>

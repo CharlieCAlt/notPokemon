@@ -1,13 +1,4 @@
 
-body {
-    background-color = #808080
-}
-
-img {
-width: 150px;
-}
-
-
 :root {
   --color1: rgb(0, 231, 255);
   --color2: rgb(255, 0, 231);
@@ -26,10 +17,17 @@ width: 150px;
   --mewtwofront: url(https://assets.codepen.io/13471/mewtwo-gx.webp);
 }
 
+ img {
+    width: auto;
+    height: auto:
+    }
+
 .card {
 
   width: 11vw;
   height: 20vw;
+  min-width: 250px;
+  min-height: 350px;
     // width: clamp(200px, 61vh, 18vw);
     // height: clamp(280px, 85vh, 25.2vw);
   @media screen and (min-width: 600px) {
@@ -39,6 +37,10 @@ width: 150px;
     // max-height: 700px;
     width: clamp(12.9vw, 61vh, 18vw);
     height: clamp(18vw, 85vh, 25.2vw);
+
+    img {
+    width: 150px
+    }
   }
 
   position: relative;
@@ -273,6 +275,7 @@ width: 150px;
     0 0 10px -2px white,
     0 55px 35px -20px rgba(0, 0, 0, 0.5);
 }
+
 .card.eevee:hover:before,
 .card.eevee.active:before {
   background-image: linear-gradient(
@@ -337,14 +340,14 @@ width: 150px;
 
 html, body {
   height: 100%;
-  background-color: #333844;
+  background-color: white;
   padding: 0;
   z-index: 1;
   transform: translate3d(0,0,0.1px);
 }
 body {
-  color: white;
-  background-color: #333844;
+  color: red;
+  background-color: white;
   font-family: "Heebo", sans-serif;
   text-align: center;
 }
@@ -355,6 +358,9 @@ h1 {
 p {
   margin-top: 5px;
   font-weight: 200;
+  color: green;
+  font-size:calc(25px + 0.1vw);
+
 }
 #app {
   position: relative;
