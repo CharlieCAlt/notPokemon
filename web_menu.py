@@ -23,6 +23,7 @@ def game():
     while var.check is False:
         deck = Deck()
         var.deck_a, var.deck_b = deck.shuffle()
+        #print(var.deck_a, var.deck_b)
         var.check = True
     if len(var.deck_a) < 1:
         return redirect("/")
@@ -34,13 +35,11 @@ def game():
         name2, attack2, defense2, types2 = values2
         return render_template('game_template.html', deck_a=var.deck_a, deck_b=var.deck_b, name=name, attack=attack, defense=defense, types=types, name2=name2, attack2=attack2, defense2=defense2, types2=types2, counter=counter)
 
-
 def next(deck_a, deck_b, counter):
     database = Database()
     values = database.pokemonData(deck_a, counter)
     values2 = database.pokemonData(deck_b, counter)
     return values, values2, counter
-
 
 @app.route("/test")
 def test():
