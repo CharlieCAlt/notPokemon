@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Pokemon{% endblock %}</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
+    <a class="navbar-brand" href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="PokemonLogo"
+             style="width:269px;height:99px"></a>
+    <a class="navbar-brand" href="/game"> Play Pokemon</a>
+    <a class="navbar-brand" href="/pokedex">View Pokedex</a>
+<!--    <a class="navbar-brand" href="/test">Do not click</a>-->
+</nav>
+
+<div>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

@@ -5,7 +5,7 @@ from deck import Deck
 
 def main():
     database = Database()
-    database.CreateTables()
+    database.createTables()
     try:
         pokemon_download.getPokemon(database)
     except IntegrityError:

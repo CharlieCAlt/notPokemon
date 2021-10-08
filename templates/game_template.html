@@ -1,0 +1,53 @@
+{% extends "game_layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-warning text-center" id="home">
+        <h1>Pokemon: The Game</h1>
+        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life. Try not to rage quit</p>
+    </div>
+</div>
+
+<div class="container" id="cardset">
+    <div class="row">
+        <div class="col-md-6 col-lg-3">
+            <div class="card bg-primary text-white">
+                <div class="card-block text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_a[counter]}}.png" width ="150" height ="150"/>
+                    <h2 class="card-title text-center"> Player 1 </h2>
+                    <h3 class="card-title text-center"> {{name}}</h3>
+                    <p class="text-center"> Attack: {{attack}}</p>
+                    <p class="text-center"> Defense: {{defense}}</p>
+                    <p class="text-center"> Types: {{types}}</p>
+                    <a href="/game" class="btn btn-danger"> Next</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card">
+                <div class="card-block bg-danger text-center">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_b[counter]}}.png" width="150" height="150"/>
+                    <h2 class="card-title text-center"> Player 2 </h2>
+                    <h3 class="card-title text-center"> {{name2}} </h3>
+                    <p class="text-center"> Attack: {{attack2}} </p>
+                    <p class="text-center"> Defense: {{defense2}} </p>
+                    <p class="text-center"> Types: {{types2}} </p>
+                    <a href="/game" class="btn btn-primary">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<div style="margin:10px;">
+
+</div>
+</div>
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-success text-white text-center">
+        <h1>Game Rules</h1>
+        <p class="lead">You will be playing against an AI opponent. <br> Each player has a deck of pokemon, equally split between them. <br>
+            The aim is to take all of the cards from your opponent, completing your pokedex. </p>
+    </div>
+</div>
+
+{% endblock %}

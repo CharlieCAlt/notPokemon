@@ -45,6 +45,17 @@ class Database:
         self.cursor.execute(addition, input_data)
         self.conn.commit()
 
+    def pokemonData(self, deck, counter):
+        pokemon_find = deck[counter]
+        find_pokemon = """
+            SELECT Name, Attack, Defense, Types
+            FROM Pokedex
+            WHERE ID=?
+                    """
+        self.cursor.execute(find_pokemon, (pokemon_find,))
+        data = self.cursor.fetchone()
+        return data
+
     def returnNames(self):
         names = f"""
         SELECT Name 
