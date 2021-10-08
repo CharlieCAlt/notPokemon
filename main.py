@@ -1,7 +1,7 @@
-from create_tables import Database
+from database import Database
 import pokemon_download
 from sqlite3 import IntegrityError
-from create_deck import Deck
+from deck import Deck
 
 def main():
     database = Database()
