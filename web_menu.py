@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 from flask import Flask, render_template, redirect
 from create_deck import Deck
 from create_tables import Database
+=======
+from flask import Flask, render_template, request
+from database import Database
+import pokemon_download
+
+
+database = Database()
+
+button_count = 0
+>>>>>>> main
 
 app = Flask(__name__)
 
@@ -17,6 +28,7 @@ var = Button()
 def index():
     return render_template('index.html')
 
+<<<<<<< HEAD
 @app.route("/game")
 def game():
     global var
@@ -44,5 +56,35 @@ def next(deck_a, deck_b, counter):
 @app.route("/test")
 def test():
     return render_template('test.html')
+=======
+@app.route("/pokedex")
+def display_pokedex():
+    return render_template('pokedex.html')
+
+@app.route("/downloadPokemons")
+def download_pokemons():
+    global button_count
+    if button_count % 2 == 0:
+        database.delete_table()
+        database.createTables()
+        pokemon_download.getPokemon(database)
+        alert = 'Do you want to override pokemon data? If yes, click Download Pokemons again'
+    else:
+        alert = None
+    button_count += 1
+    names = database.returnNames()
+    names_list = names.values.tolist()
+    return render_template('pokedex.html', names=names_list, alert=alert)
+
+@app.route("/showPokemons")
+def show_pokemons():
+    names = database.returnNames()
+    names_list = names.values.tolist()
+    name = request.args.get('name')
+    data = database.getAll(name)
+    data_list = data.values.tolist()
+    return render_template('card.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
+                           attack=data_list[0][3], defense=data_list[0][4], type=data_list[0][5])
+>>>>>>> main
 
 if __name__ == "__main__": app.run()

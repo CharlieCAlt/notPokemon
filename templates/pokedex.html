@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+<html>
+<head>
+  <link rel="stylesheet" href="static/style.css?id=1234">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Pokedex</title>
+</head>
+
+<body>
+
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-warning text-center" id="home">
+        <h1>Pokedex</h1>
+    </div>
+</div>
+
+
+<main id=app>
+
+<div id="download">
+<form id="messageForm" action="/downloadPokemons" method="get">
+    <input type="submit" value="Download Pokemons" onclick="alertMessage(); hideDiv()" />
+</form>
+</div>
+
+  <script src="demo_script_src.js">
+</script>
+
+
+<script>
+function alertMessage() {
+  if ("{{alert}}" == "Do you want to override pokemon data? If yes, click Download Pokemons again") {
+  window.alert("{{alert}}");
+  }
+}
+function hideDiv() {
+  var x = document.getElementById("download");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+function showDiv() {
+  var x = document.getElementById("show");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<br>
+
+
+<form action="/showPokemons" method="get">
+<label>Choose a pokemon:</label>
+  <select name="name">
+    {% for item in names %}
+    <option value="{{item[0]}}">{{item[0]}}</option>
+    {% endfor %}
+  </select>
+<input type="submit" onclick="showDiv()"/>
+</form>
+
+
+<style class="hover"></style>
+
+
+</main>
+
+<body/>
+{% endblock %}

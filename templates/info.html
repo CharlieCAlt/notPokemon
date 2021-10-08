@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}Bus Information{% endblock %}
+{% block content %}
+<div class="container body-content">
+    <h2>Bus Information</h2>
+    <div>
+        <p>You entered postcode: <span>{{ postcode }}</span></p>
+        <p> Closest stop -> {{stop_1}}
+        {% for item in board_1 %}
+            <div>{{ item[0] }}&ensp; |&ensp;  {{ item[1]}}&ensp; |&ensp; {{item[2]}}</div>
+        {% endfor %} </p>
+        <p> Second Closest stop -> {{stop_2}}
+        {% for item in board_2 %}
+            <div>{{ item[0]}}&ensp;  |&ensp; {{ item[1]}}&ensp; |&ensp; {{item[2]}}</div>
+        {% endfor %} </p>
+    </div>
+</div>
+{% endblock %}

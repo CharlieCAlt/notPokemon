@@ -1,5 +1,5 @@
 import random
-from create_tables import Database
+from database import Database
 
 
 class Deck:
