@@ -1,7 +1,6 @@
 import random
 from database import Database
 
-
 class Deck:
     def __init__(self):
         database = Database()

@@ -5,7 +5,7 @@ from deck import Deck
 
 def main():
     database = Database()
-    database.CreateTables()
+    database.createTables()
     try:
         pokemon_download.getPokemon(database)
     except IntegrityError:
@@ -13,7 +13,6 @@ def main():
     deck = Deck()
     answer = deck.shuffle()
     deck_a, deck_b = answer
-    #print(deck_a)
 
 if __name__ == '__main__':
     main()
