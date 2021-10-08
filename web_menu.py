@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect
 from database import Database
 import pokemon_download
 
-
 database = Database()
 
 button_count = 0
