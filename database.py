@@ -45,7 +45,6 @@ class Database:
         self.cursor.execute(addition, input_data)
         self.conn.commit()
 
-<<<<<<< HEAD:create_tables.py
     def pokemonData(self, deck, counter):
         pokemon_find = deck[counter]
         find_pokemon = """
@@ -56,7 +55,7 @@ class Database:
         self.cursor.execute(find_pokemon, (pokemon_find,))
         data = self.cursor.fetchone()
         return data
-=======
+
     def returnNames(self):
         names = f"""
         SELECT Name 
@@ -87,4 +86,3 @@ class Database:
         self.conn.commit()
 
 
->>>>>>> main:database.py

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-from flask import Flask, render_template, redirect
-from create_deck import Deck
-from create_tables import Database
-=======
-from flask import Flask, render_template, request
+from deck import Deck
+from flask import Flask, render_template, request, redirect
 from database import Database
 import pokemon_download
 
@@ -11,7 +7,6 @@ import pokemon_download
 database = Database()
 
 button_count = 0
->>>>>>> main
 
 app = Flask(__name__)
 
@@ -28,7 +23,6 @@ var = Button()
 def index():
     return render_template('index.html')
 
-<<<<<<< HEAD
 @app.route("/game")
 def game():
     global var
@@ -56,7 +50,6 @@ def next(deck_a, deck_b, counter):
 @app.route("/test")
 def test():
     return render_template('test.html')
-=======
 @app.route("/pokedex")
 def display_pokedex():
     return render_template('pokedex.html')
@@ -85,6 +78,5 @@ def show_pokemons():
     data_list = data.values.tolist()
     return render_template('card.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
                            attack=data_list[0][3], defense=data_list[0][4], type=data_list[0][5])
->>>>>>> main
 
 if __name__ == "__main__": app.run()
