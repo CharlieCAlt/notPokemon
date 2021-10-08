@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from create_tables import Database
+from database import Database
 import pokemon_download
 
 
