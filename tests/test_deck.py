@@ -1,7 +1,7 @@
 from deck import Deck
 
 
-class TestFoobar:
+class TestDeck:
 
     @staticmethod
     def test_check_deck_exists():

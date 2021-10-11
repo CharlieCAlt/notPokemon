@@ -1,12 +1,13 @@
 import pandas as pd
 import sqlite3
 from sqlite3 import Error
+import config
 
 class Database:
 
     def __init__(self):
         try:
-            self.conn = sqlite3.connect('pokedex.db', check_same_thread=False)
+            self.conn = sqlite3.connect(config.DATABASE, check_same_thread=False)
         except Error as e:
             print(e)
             raise e
