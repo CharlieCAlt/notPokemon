@@ -9,39 +9,58 @@
     </div>
 </div>
 
+<style>
+    .horizontal-centre {
+        display: flex;
+        justify-content: center;
+        }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+  function nextButton1() {
+    $.ajax({
+        url: "/cardStatsA",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#cardA").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+  function nextButton2() {
+    $.ajax({
+        url: "/cardStatsB",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#cardB").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+</script>
+
+<div class="container">
+    <div class="horizontal-centre">
+        <a onclick="nextButton1(); nextButton2(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+    </div>
+</div>
 <div class="container" id="cardset">
     <div class="row">
         <div class="col-md-6 col-lg-3">
-            <div class="card bg-primary text-white">
-                <div class="card-block text-center">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_a[counter]}}.png" width ="150" height ="150"/>
-                    <h2 class="card-title text-center"> Player 1 </h2>
-                    <h3 class="card-title text-center"> {{name}}</h3>
-                    <p class="text-center"> Attack: {{attack}}</p>
-                    <p class="text-center"> Defense: {{defense}}</p>
-                    <p class="text-center"> Types: {{types}}</p>
-                    <a href="/game" class="btn btn-danger"> Next</a>
-                </div>
-            </div>
+            <div id="cardA"></div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="card">
-                <div class="card-block bg-danger text-center">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_b[counter]}}.png" width="150" height="150"/>
-                    <h2 class="card-title text-center"> Player 2 </h2>
-                    <h3 class="card-title text-center"> {{name2}} </h3>
-                    <p class="text-center"> Attack: {{attack2}} </p>
-                    <p class="text-center"> Defense: {{defense2}} </p>
-                    <p class="text-center"> Types: {{types2}} </p>
-                    <a href="/game" class="btn btn-primary">Next</a>
-                </div>
-            </div>
+            <div id="cardB"></div>
         </div>
     </div>
-<div style="margin:10px;">
+</div>
 
-</div>
-</div>
+
+<div style="margin:10px;"></div>
+
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-success text-white text-center">
         <h1>Game Rules</h1>
