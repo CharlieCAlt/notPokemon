@@ -2,13 +2,10 @@ from deck import Deck
 from flask import Flask, render_template, request, redirect
 from database import Database
 import pokemon_download
-from button import Button
 
 app = Flask(__name__)
 
 database = Database()
-
-var = Button()
 
 button_count = 0
 
@@ -18,21 +15,20 @@ def index():
 
 @app.route("/game")
 def game():
-    global var
-    while var.check is False:
+    deck = Deck()
+    while deck.check is False:
         deck = Deck()
-        var.deck_a, var.deck_b = deck.shuffle()
-        #print(var.deck_a, var.deck_b)
-        var.check = True
-    if len(var.deck_a) < 1:
+        deck.deck_a, deck.deck_b = deck.shuffle()
+        deck.check = True
+    if len(deck.deck_a) < 1:
         return redirect("/")
     else:
-        var.counter += 1
-        value = var.next_card(var.deck_a, var.deck_b, var.counter)
+        deck.counter += 1
+        value = deck.next_card(deck.deck_a, deck.deck_b, deck.counter)
         values, values2, counter = value
         name, attack, defense, types = values
         name2, attack2, defense2, types2 = values2
-        return render_template('game_template.html', deck_a=var.deck_a, deck_b=var.deck_b, name=name, attack=attack, defense=defense, types=types, name2=name2, attack2=attack2, defense2=defense2, types2=types2, counter=counter)
+        return render_template('game_template.html', deck_a=deck.deck_a, deck_b=deck.deck_b, name=name, attack=attack, defense=defense, types=types, name2=name2, attack2=attack2, defense2=defense2, types2=types2, counter=counter)
 
 
 @app.route("/test")
