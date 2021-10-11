@@ -2,21 +2,15 @@ from deck import Deck
 from flask import Flask, render_template, request, redirect
 from database import Database
 import pokemon_download
-
-database = Database()
-
-button_count = 0
+from button import Button
 
 app = Flask(__name__)
 
-class Button:
-    def __init__(self):
-        self.check = False
-        self.deck_a = []
-        self.deck_b = []
-        self.counter = -1
+database = Database()
 
 var = Button()
+
+button_count = 0
 
 @app.route("/")
 def index():
