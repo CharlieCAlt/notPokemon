@@ -8,7 +8,7 @@ class Button:
         self.deck_b = []
         self.counter = -1
 
-    def next_card(self,deck_a, deck_b, counter):
+    def next_card(self, deck_a, deck_b, counter):
         database = Database()
         values = database.pokemonData(deck_a, counter)
         values2 = database.pokemonData(deck_b, counter)
