@@ -13,8 +13,8 @@ class Button:
     def __init__(self):
         self.deck_a = []
         self.deck_b = []
-        self.counterA = 70
-        self.counterB = 70
+        self.counterA = 0
+        self.counterB = 0
         deck = Deck()
         self.deck_a, self.deck_b = deck.shuffle()
 
