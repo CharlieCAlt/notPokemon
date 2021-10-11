@@ -30,3 +30,8 @@ class Deck:
         values = database.pokemonData(deck_a, counter)
         values2 = database.pokemonData(deck_b, counter)
         return values, values2, counter
+
+    def get_attack(self, deck, counter):
+        database = Database()
+        attack = database.pokemonData(deck, counter)
+        return attack

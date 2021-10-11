@@ -86,4 +86,15 @@ class Database:
         self.cursor.execute(query)
         self.conn.commit()
 
+    def get_attack(self, deck, counter):
+        pokemon_find = deck[counter]
+        find_pokemon = """
+                    SELECT Attack
+                    FROM Pokedex
+                    WHERE ID=?
+                            """
+        self.cursor.execute(find_pokemon, (pokemon_find,))
+        data = self.cursor.fetchone()
+        return data
+
 

@@ -5,4 +5,5 @@ class Player:
     def __init__(self):
         self.attacker = False
         self.defender = False
+        self.deck = None
 

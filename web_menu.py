@@ -34,6 +34,7 @@ def game():
 @app.route("/test")
 def test():
     return render_template('test.html')
+
 @app.route("/pokedex")
 def display_pokedex():
     return render_template('pokedex.html')
