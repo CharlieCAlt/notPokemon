@@ -43,7 +43,8 @@ def cardA():
     values = database.pokemonData(var.deck_a, var.counterA)
     name, attack, defense, type1, type2 = values
     var.counterA += 1
-    return render_template('cardStatsA.html', deck_a=var.deck_a, name=name, attack=attack, defense=defense, type1=type1, type2=type2, counter1=var.counterA-1, remaining1=remaining_a)
+    return render_template('cardStatsA.html', deck_a=var.deck_a, name=name, attack=attack, defense=defense, type1=type1, type2=type2,
+                           counter1=var.counterA-1, remaining1=remaining_a)
 
 
 @app.route("/cardStatsB")
@@ -57,7 +58,8 @@ def cardB():
     values2 = database.pokemonData(var.deck_b, var.counterB)
     nameB, attackB, defenseB, typeB1, typeB2 = values2
     var.counterB += 1
-    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=nameB, attack2=attackB, defense2=defenseB, typeB1=typeB1, typeB2=typeB2, counter2=var.counterB-1, remaining2=remaining_b)
+    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=nameB, attack2=attackB, defense2=defenseB, typeB1=typeB1, typeB2=typeB2,
+                           counter2=var.counterB-1, remaining2=remaining_b)
 
 
 @app.route("/test")
