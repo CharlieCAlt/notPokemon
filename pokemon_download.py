@@ -1,5 +1,5 @@
 import requests
-import pprint
+from database import Database
 
 class Pokemon:
     """ A Pokemon with Name, Artwork, Attack, Defense and Type stored for database input"""
@@ -37,6 +37,7 @@ def getPokemon(database):
                 types = (type1, type2)
             except IndexError:
                 types = type1
+                type2 = ''
             for data in results:
                 figure = data['stat']
                 if figure['name'] == 'attack':
@@ -45,8 +46,9 @@ def getPokemon(database):
                     defense = data['base_stat']
                 else:
                     pass
-            input_data = (pokenumber, name, artwork, attack, defense, str(types))
+            input_data = (pokenumber, name, artwork, attack, defense, type1, type2)
             pokenumber += 1
+            database.createTables()
             database.addPokemon(input_data)
         else:
             pass
