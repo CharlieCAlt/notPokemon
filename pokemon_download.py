@@ -1,4 +1,5 @@
 import requests
+import pprint
 
 class Pokemon:
     """ A Pokemon with Name, Artwork, Attack, Defense and Type stored for database input"""
@@ -49,3 +50,36 @@ def getPokemon(database):
             database.addPokemon(input_data)
         else:
             pass
+
+def typeModifier(attacker, defender):
+    if "normal" in attacker:
+        rock = 0.5
+        ghost = 0
+        steel = 0.5
+    elif "fighting" in attacker:
+        normal = 2
+        ice = 2
+        poison = 0.5
+        flying = 0.5
+        psychic = 0.5
+        bug = 0.5
+        rock = 2
+        ghost = 0
+        dark = 2
+        steel = 2
+        fairy = 0.5
+    elif "flying" in attacker:
+        electric = 0.5
+        grass = 2
+        fighting = 2
+        bug = 2
+        rock = 0.5
+        steel = 0.5
+    elif "poison" in attacker:
+
+
+
+
+
+
+typeModifier()
