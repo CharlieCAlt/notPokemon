@@ -30,7 +30,13 @@ def index():
 
 @app.route("/game")
 def game():
-    return render_template('game_template.html')
+    global var
+    if len(var.deck_a) ==0:
+        deck=Deck()
+        var.deck_a, var.deck_b = deck.shuffle()
+        return redirect("/")
+    else:
+        return render_template('game_template.html')
 
 
 @app.route("/cardStatsA")
