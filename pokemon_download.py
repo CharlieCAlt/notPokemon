@@ -1,5 +1,5 @@
 import requests
-from database import Database
+
 
 class Pokemon:
     """ A Pokemon with Name, Artwork, Attack, Defense and Type stored for database input"""
@@ -10,6 +10,7 @@ class Pokemon:
         self.__attack = attack
         self.__defense = defense
         self.__types = types
+
 
 def getPokemon(database):
     r = requests.get(f'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
@@ -53,85 +54,43 @@ def getPokemon(database):
         else:
             pass
 
-def typeModifier(attacker, defender):
-    if "normal" in attacker:
-        rock = 0.5
-        ghost = 0
-        steel = 0.5
-    elif "fighting" in attacker:
-        normal = 2
-        ice = 2
-        poison = 0.5
-        flying = 0.5
-        psychic = 0.5
-        bug = 0.5
-        rock = 2
-        ghost = 0
-        dark = 2
-        steel = 2
-        fairy = 0.5
-    elif "flying" in attacker:
-        electric = 0.5
-        grass = 2
-        fighting = 2
-        bug = 2
-        rock = 0.5
-        steel = 0.5
-    elif "poison" in attacker:
-        grass = 2
-        fairy = 2
-        poison = 0.5
-        ground = 0.5
-        rock = 0.5
-        ghost = 0.5
-        steel = 0
-    elif "ground" in attacker:
-        poison = 2
-        rock = 2
-        steel = 2
-        fire = 2
-        electric = 2
-        bug = 0.5
-        grass = 0.5
-        flying = 0
-    elif "rock" in attacker:
-        flying = 2
-        bug = 2
-        fire = 2
-        ice = 2
-        fighting = 0.5
-        ground = 0.5
-        steel = 0.5
-    elif "bug" in attacker:
-        grass = 2
-        psychic = 2
-        dark = 2
-        fighting = 0.5
-        flying = 0.5
-        poison = 0.5
-        ghost = 0.5
-        steel = 0.5
-        fire = 0.5
-        fairy = 0.5
-    elif "ghost" in attacker:
-        ghost = 2
-        psychic = 2
-        dark = 0.5
-        normal = 0
-    elif "steel" in attacker:
-        rock = 2
-        ice = 2
-        fairy = 2
-        steel = 0.5
-        fire = 0.5
-        water = 0.5
-        electric = 0.5
-    elif "fire" in attacker:
-        bug = 2
-        steel = 2
-        grass = 2
-        ice = 2
-        rock = 0.5
-        fire = 0.5
-        water = 0.5
-        dragon = 0.5
+
+def damageModifier(attackerType, defenseType1, defenseType2):
+    url = typeURL(attackerType)
+    defenseType =[defenseType1, defenseType2]
+    modifier = calculateModifier(url, defenseType)
+    modifier /= 10
+    return modifier
+
+
+def typeURL(attackerType):
+    typeUrl = None
+    r = requests.get("https://pokeapi.co/api/v2/type/")
+    response = r.json()
+    results = response["results"]
+    for type in results:
+        typeName = type["name"]
+        if typeName == attackerType:
+            typeUrl = type["url"]
+    return typeUrl
+
+
+def calculateModifier(typeUrl, defenseType):
+    dmgModifier = int(10)
+    r = requests.get(typeUrl)
+    response = r.json()
+    results = response["damage_relations"]
+    doubleDamage = results["double_damage_to"]
+    halfDamage = results["half_damage_to"]
+    noDamage = results["no_damage_to"]
+    for dType in defenseType:
+        for typeName in doubleDamage:
+            if dType in typeName.values():
+                dmgModifier *= 2
+        for typeName in halfDamage:
+            if dType in typeName.values():
+                dmgModifier *= 0.5
+        for typeName in noDamage:
+            if dType in typeName.values():
+                dmgModifier *= 0
+    return dmgModifier
