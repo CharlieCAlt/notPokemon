@@ -76,7 +76,14 @@ def typeModifier(attacker, defender):
         rock = 0.5
         steel = 0.5
     elif "poison" in attacker:
-
+        grass = 2
+        fairy = 2
+        poison = 0.5
+        ground = 0.5
+        rock = 0.5
+        ghost = 0.5
+        steel = 0
+    elif "ground" in attacker:
 
 
 
