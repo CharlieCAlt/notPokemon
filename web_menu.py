@@ -3,11 +3,11 @@ from flask import Flask, render_template, request, redirect
 from database import Database
 import pokemon_download
 
+app = Flask(__name__)
+
 database = Database()
 
 button_count = 0
-
-app = Flask(__name__)
 
 class Button:
     def __init__(self):
@@ -21,7 +21,6 @@ class Button:
 
 
 var = Button()
-
 
 @app.route("/")
 def index():
