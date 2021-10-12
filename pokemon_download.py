@@ -94,3 +94,44 @@ def typeModifier(attacker, defender):
         bug = 0.5
         grass = 0.5
         flying = 0
+    elif "rock" in attacker:
+        flying = 2
+        bug = 2
+        fire = 2
+        ice = 2
+        fighting = 0.5
+        ground = 0.5
+        steel = 0.5
+    elif "bug" in attacker:
+        grass = 2
+        psychic = 2
+        dark = 2
+        fighting = 0.5
+        flying = 0.5
+        poison = 0.5
+        ghost = 0.5
+        steel = 0.5
+        fire = 0.5
+        fairy = 0.5
+    elif "ghost" in attacker:
+        ghost = 2
+        psychic = 2
+        dark = 0.5
+        normal = 0
+    elif "steel" in attacker:
+        rock = 2
+        ice = 2
+        fairy = 2
+        steel = 0.5
+        fire = 0.5
+        water = 0.5
+        electric = 0.5
+    elif "fire" in attacker:
+        bug = 2
+        steel = 2
+        grass = 2
+        ice = 2
+        rock = 0.5
+        fire = 0.5
+        water = 0.5
+        dragon = 0.5
