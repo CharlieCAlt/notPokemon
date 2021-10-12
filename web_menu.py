@@ -4,10 +4,9 @@ from database import Database
 import pokemon_download
 
 app = Flask(__name__)
-
 database = Database()
-
 button_count = 0
+
 
 class Button:
     def __init__(self):
@@ -22,6 +21,7 @@ class Button:
 
 var = Button()
 
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -32,9 +32,38 @@ def game():
     return render_template('game_template.html')
 
 
+@app.route("/startA")
+def startA():
+    global var
+    database = Database()
+    values = database.pokemonData(var.deck_a, var.counterA)
+    name, attack, defense, type1, type2 = values
+    remaining_a = len(var.deck_a) - var.counterA
+    if remaining_a == 0:
+        var.counterA = 0
+        remaining_a = len(var.deck_a) - var.counterA
+    return render_template('cardStatsA.html', deck_a=var.deck_a, name=name, attack=attack, defense=defense, type1=type1,
+                           type2=type2, counter1=var.counterA, remaining1=remaining_a)
+
+
+@app.route("/startB")
+def startB():
+    global var
+    database = Database()
+    values = database.pokemonData(var.deck_b, var.counterB)
+    name, attack, defense, type1, type2 = values
+    remaining_b = len(var.deck_b) - var.counterB
+    if remaining_b == 0:
+        var.counterB = 0
+        remaining_b = len(var.deck_b) - var.counterB
+    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=name, attack2=attack, defense2=defense,
+                           typeB1=type1, typeB2=type2, counter2=var.counterB, remaining2=remaining_b)
+
+
 @app.route("/cardStatsA")
 def cardA():
     global var
+    var.counterA += 1
     remaining_a = len(var.deck_a) - var.counterA
     if remaining_a == 0:
         var.counterA = 0
@@ -42,22 +71,23 @@ def cardA():
     database = Database()
     values = database.pokemonData(var.deck_a, var.counterA)
     name, attack, defense, type1, type2 = values
-    var.counterA += 1
-    return render_template('cardStatsA.html', deck_a=var.deck_a, name=name, attack=attack, defense=defense, type1=type1, type2=type2, counter1=var.counterA-1, remaining1=remaining_a)
+    return render_template('cardStatsA.html', deck_a=var.deck_a, name=name, attack=attack, defense=defense, type1=type1,
+                           type2=type2, counter1=var.counterA, remaining1=remaining_a)
 
 
 @app.route("/cardStatsB")
 def cardB():
     global var
+    var.counterB += 1
     remaining_b = len(var.deck_b) - var.counterB
     if remaining_b == 0:
         var.counterB = 0
         remaining_b = len(var.deck_b) - var.counterB
     database = Database()
-    values2 = database.pokemonData(var.deck_b, var.counterB)
-    nameB, attackB, defenseB, typeB1, typeB2 = values2
-    var.counterB += 1
-    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=nameB, attack2=attackB, defense2=defenseB, typeB1=typeB1, typeB2=typeB2, counter2=var.counterB-1, remaining2=remaining_b)
+    values = database.pokemonData(var.deck_b, var.counterB)
+    name, attack, defense, type1, type2 = values
+    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=name, attack2=attack, defense2=defense,
+                           typeB1=type1, typeB2=type2, counter2=var.counterB, remaining2=remaining_b)
 
 
 @app.route("/test")
@@ -94,7 +124,8 @@ def show_pokemons():
     data = database.getAll(name)
     data_list = data.values.tolist()
     return render_template('card.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
-                           attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5], type2=data_list[0][6])
+                           attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5],
+                           type2=data_list[0][6])
 
 
 if __name__ == "__main__": app.run()
