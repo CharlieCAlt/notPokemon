@@ -84,9 +84,11 @@ def typeModifier(attacker, defender):
         ghost = 0.5
         steel = 0
     elif "ground" in attacker:
-
-
-
-
-
-typeModifier()
+        poison = 2
+        rock = 2
+        steel = 2
+        fire = 2
+        electric = 2
+        bug = 0.5
+        grass = 0.5
+        flying = 0
