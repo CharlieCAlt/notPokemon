@@ -26,5 +26,6 @@ class TestBattles:
         game = Game()
         game.choose_attacker()
         while not game.finished:
-            winner = game.attack()
+            result = game.attack()
+            winner = game.finish()
         assert game.finished
