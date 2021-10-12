@@ -3,8 +3,8 @@ import sqlite3
 from sqlite3 import Error
 import config
 
-class Database:
 
+class Database:
     def __init__(self):
         try:
             self.conn = sqlite3.connect(config.DATABASE, check_same_thread=False)
@@ -25,7 +25,8 @@ class Database:
         Artwork VARCHAR(100),
         Attack INT,
         Defense INT,
-        Types VARCHAR(20),
+        Type1 VARCHAR(20),
+        Type2 VARCHAR(20),
         UNIQUE(ID, Name)
         )'''
         self.cursor.execute(createPokedex)
@@ -33,8 +34,9 @@ class Database:
 
     def addPokemon(self, input_data):
         addition = f"""
-        INSERT INTO Pokedex (ID, Name, Artwork, Attack, Defense, Types)
+        INSERT INTO Pokedex (ID, Name, Artwork, Attack, Defense, Type1, Type2)
         VALUES(
+        ?,
         ?,
         ?,
         ?,
@@ -49,7 +51,7 @@ class Database:
     def pokemonData(self, deck, counter):
         pokemon_find = deck[counter]
         find_pokemon = """
-            SELECT Name, Attack, Defense, Types
+            SELECT Name, Attack, Defense, Type1, Type2
             FROM Pokedex
             WHERE ID=?
                     """
@@ -76,7 +78,7 @@ class Database:
     def getAll(self, name):
         data = f"""
         SELECT * 
-        FROM Pokedex 
+        FROM Pokedex
         WHERE name = ? """
         df = pd.read_sql_query(data, self.conn, params=(name,))
         return df
@@ -96,5 +98,4 @@ class Database:
         self.cursor.execute(find_pokemon, (pokemon_find,))
         data = self.cursor.fetchone()
         return data
-
 
