@@ -7,6 +7,10 @@ class Deck:
         database.cursor.execute("SELECT * FROM Pokedex")
         results = database.cursor.fetchall()
         self.full_deck = list(range(1, len(results)+1))
+        self.check = False
+        self.deck_a = []
+        self.deck_b = []
+        self.counter = -1
 
     def shuffle(self):
         half = len(self.full_deck)/2
@@ -20,3 +24,14 @@ class Deck:
             deck_b = self.full_deck[:half]
             deck_a = self.full_deck[half:]
         return deck_a, deck_b
+
+    def next_card(self, deck_a, deck_b, counter):
+        database = Database()
+        values = database.pokemonData(deck_a, counter)
+        values2 = database.pokemonData(deck_b, counter)
+        return values, values2, counter
+
+    def get_attack(self, deck, counter):
+        database = Database()
+        attack = database.pokemonData(deck, counter)
+        return attack
