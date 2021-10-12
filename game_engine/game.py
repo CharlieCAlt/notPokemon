@@ -1,5 +1,6 @@
 from deck import Deck
 from player import Player
+import numpy as np
 
 
 class Game:
