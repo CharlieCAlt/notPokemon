@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+  function nextButtonA() {
+    $.ajax({
+        url: "/cardStatsA",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#cardA").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+</script>
+
+<div class="container" id="cardset">
+    <div class="card bg-primary text-white">
+        <div class="card-block text-center">
+            <p class="text-left"> Cards left: {{remaining1}}</p>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_a[counter1]}}.png" width ="150" height ="150"/>
+            <h3 class="card-title text-center"> {{name}}</h3>
+            <p class="text-center"> Attack: {{attack}}</p>
+            <p class="text-center"> Defense: {{defense}}</p>
+            <p class="text-center"> Types: {{types}}</p>
+            <a onclick="nextButtonA()" class="btn btn-danger"> Next</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
