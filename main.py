@@ -2,17 +2,14 @@ from database import Database
 import pokemon_download
 from sqlite3 import IntegrityError
 from deck import Deck
+from game_engine.game import Game
 
 def main():
-    database = Database()
-    database.createTables()
-    try:
-        pokemon_download.getPokemon(database)
-    except IntegrityError:
-        pass
-    deck = Deck()
-    answer = deck.shuffle()
-    deck_a, deck_b = answer
+    game = Game()
+    game.choose_attacker()
+    print(game.attacker)
+    game.attack()
+
 
 if __name__ == '__main__':
     main()
