@@ -17,7 +17,13 @@ class Game:
         self.finished = False
 
     def choose_attacker(self):
-        pass
+        number = np.random.randint(1,3)
+        if number == 1:
+            self.attacker = self.player_1
+            self.defender = self.player_2
+        if number == 2:
+            self.attacker = self.player_2
+            self.defender = self.player_1
 
     def attack(self):
         attack = self.deck.get_attack(self.attacker.deck, self.deck.counter)
