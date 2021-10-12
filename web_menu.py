@@ -3,11 +3,11 @@ from flask import Flask, render_template, request, redirect
 from database import Database
 import pokemon_download
 
+app = Flask(__name__)
+
 database = Database()
 
 button_count = 0
-
-app = Flask(__name__)
 
 class Button:
     def __init__(self):
@@ -20,7 +20,6 @@ class Button:
 
 
 var = Button()
-
 
 @app.route("/")
 def index():
@@ -57,7 +56,7 @@ def cardB():
     values2 = database.pokemonData(var.deck_b, var.counterB)
     name2, attack2, defense2, types2 = values2
     var.counterB += 1
-    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=name2, attack2=attack2, defense2=defense2, types2=types2, counter2=var.counterB-1, remaining2=remaining_b)
+    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=name2, attack2=attack2, defense2=defense2, types2=types2, counter2=var.counterB-1, remaining2=remaining
 
 
 @app.route("/test")

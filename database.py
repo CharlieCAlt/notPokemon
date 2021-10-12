@@ -1,12 +1,13 @@
 import pandas as pd
 import sqlite3
 from sqlite3 import Error
+import config
 
 class Database:
 
     def __init__(self):
         try:
-            self.conn = sqlite3.connect('pokedex.db', check_same_thread=False)
+            self.conn = sqlite3.connect(config.DATABASE, check_same_thread=False)
         except Error as e:
             print(e)
             raise e
@@ -84,5 +85,16 @@ class Database:
         query = f"""DROP TABLE Pokedex"""
         self.cursor.execute(query)
         self.conn.commit()
+
+    def get_attack(self, deck, counter):
+        pokemon_find = deck[counter]
+        find_pokemon = """
+                    SELECT Attack
+                    FROM Pokedex
+                    WHERE ID=?
+                            """
+        self.cursor.execute(find_pokemon, (pokemon_find,))
+        data = self.cursor.fetchone()
+        return data
 
 
