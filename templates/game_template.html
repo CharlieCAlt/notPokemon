@@ -6,7 +6,7 @@
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-warning text-center" id="home">
         <h1>Pokemon: The Game</h1>
-        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life. Try not to rage quit</p>
+        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life.</p>
     </div>
 </div>
 
@@ -49,7 +49,7 @@
 </audio>
 
 
-<audio id="attackAudio">
+<audio id="machopAudio">
     <source src="static/attack.mp3" type="audio/mpeg">
 </audio>
 
@@ -65,7 +65,7 @@ function pauseAudio() {
   x.pause();
 }
 
-var y = document.getElementById("attackAudio");
+var y = document.getElementById("machopAudio");
 
 function playAttackAudio() {
   y.play();
@@ -99,7 +99,7 @@ function pauseAttackAudio() {
             <div id="cardA"></div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div style = "margin:50px"></div>
+            <div style = "margin:200px"></div>
         </div>
         <div class="col-md-6 col-lg-3">
             <div id="cardB"></div>
@@ -110,9 +110,9 @@ function pauseAttackAudio() {
 
 <div class="container">
     <div class="column horizontal-centre">
-        <button onclick="playAttackAudio()"> Attack! </button>
-        <button onclick="playAudio()" type="button">Play Audio</button>
-        <button onclick="pauseAudio()" type="button">Pause Audio</button>
+        <button class="bg-warning" onclick="playAttackAudio(); nextButton1(); nextButton2()"> Attack! </button>
+        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>
+        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>
     </div>
 </div>
 
