@@ -15,6 +15,7 @@ class Button:
         self.deck_b = []
         self.counterA = 0
         self.counterB = 0
+        database.createTables()
         deck = Deck()
         self.deck_a, self.deck_b = deck.shuffle()
 
