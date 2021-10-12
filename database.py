@@ -2,8 +2,8 @@ import pandas as pd
 import sqlite3
 from sqlite3 import Error
 
-class Database:
 
+class Database:
     def __init__(self):
         try:
             self.conn = sqlite3.connect('pokedex.db', check_same_thread=False)
