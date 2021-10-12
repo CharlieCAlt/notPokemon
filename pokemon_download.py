@@ -48,7 +48,7 @@ def getPokemon(database):
                     pass
             input_data = (pokenumber, name, artwork, attack, defense, type1, type2)
             pokenumber += 1
-            database.createTablesTest()
-            database.addPokemonTest(input_data)
+            database.createTables()
+            database.addPokemon(input_data)
         else:
             pass

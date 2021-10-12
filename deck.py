@@ -4,7 +4,7 @@ from database import Database
 class Deck:
     def __init__(self):
         database = Database()
-        database.cursor.execute("SELECT * FROM PokedexTest")
+        database.cursor.execute("SELECT * FROM Pokedex")
         results = database.cursor.fetchall()
         self.full_deck = list(range(1, len(results)+1))
 
