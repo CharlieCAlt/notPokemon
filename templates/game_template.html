@@ -53,6 +53,9 @@
     <source src="static/attack.mp3" type="audio/mpeg">
 </audio>
 
+<audio id="bestAudio">
+    <source src="static/Pokemon_song_send_help.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 var x = document.getElementById("gameAudio");
@@ -74,21 +77,20 @@ function playAttackAudio() {
 function pauseAttackAudio() {
   y.pause();
 }
+
+var a = document.getElementById("bestAudio");
+
+function getPumped() {
+    a.play();
+}
+
+
 </script>
 
 
 <div class="container">
-    <div class="jumbotron bg-primary text-center">
-        <p> This is the back of the card for our pokemon</p>
-        <img src="static/pokemon_card_rear.png" alt="That didn't work"
-             style="width:350px;height:400px">
-    </div>
-</div>
-
-
-<div class="container">
     <div class="horizontal-centre">
-        <a onclick="nextButton1(); nextButton2(); playAudio(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="nextButton1(); nextButton2(); getPumped(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -99,10 +101,25 @@ function pauseAttackAudio() {
             <div id="cardA"></div>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div style = "margin:200px"></div>
+             <div class="card-block text-center">
+               <img src="static/pokemon_card_rear.png" alt="card go here" style="width:250px; height:395px">
+             </div>
         </div>
         <div class="col-md-6 col-lg-3">
             <div id="cardB"></div>
+        </div>
+                <div class="col-md-6 col-lg-3">
+             <div class="card-block text-center">
+               <img class="card-img-top" src="static/blank_card.jpg" alt="card go here" style="width:100%; height:395px">
+                 <div class="card-img-overlay">
+                     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" width ="200" height ="200"/>
+                     <p></p>
+                     <h4 class="card-title">Dragon</h4>
+                     <p></p>
+                     <p class="card-text">This is a test</p>
+
+                 </div>
+             </div>
         </div>
     </div>
 </div>
@@ -110,7 +127,7 @@ function pauseAttackAudio() {
 
 <div class="container">
     <div class="column horizontal-centre">
-        <button class="bg-warning" onclick="playAttackAudio(); nextButton1(); nextButton2()"> Attack! </button>
+        <button class="bg-warning" onclick="nextButton1(); nextButton2(), style.display='none'" > Attack! </button>
         <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>
         <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>
     </div>

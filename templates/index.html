@@ -10,6 +10,8 @@
             your journey, or the Pokedex to visit the Pokedex!</p>
     </div>
     <head>
+
+
     <style>
     * {
       box-sizing: border-box;
@@ -27,6 +29,20 @@
     }
     </style>
     </head>
+
+    <audio id="bestAudio">
+        <source src="static/Pokemon_song_send_help.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        var a = document.getElementById("bestAudio");
+
+        function getPumped() {
+        a.play();
+        }
+
+    </script>
+
     <div class="row">
       <div class="column">
           <a href="/game">
@@ -40,6 +56,9 @@
              style="width:200px;height:200px">
           </a>
       </div>
+        <div class="column">
+            <button onclick="getPumped();" class="bg-primary">Get Pumped</button>
+        </div>
     </div>
 </div>
 {% endblock %}
