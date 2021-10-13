@@ -21,9 +21,9 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-  function nextButton1() {
+  function startButton1() {
     $.ajax({
-        url: "/cardStatsA",
+        url: "/startA",
         type: "get",
         data: {},
         success: function(response) {
@@ -32,9 +32,9 @@
         error: function(err) {}
     });
   }
-  function nextButton2() {
+  function startButton2() {
     $.ajax({
-        url: "/cardStatsB",
+        url: "startB",
         type: "get",
         data: {},
         success: function(response) {
@@ -77,7 +77,7 @@ function getPumped() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="nextButton1(); nextButton2(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startButton1(); startButton2(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 

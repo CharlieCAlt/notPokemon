@@ -1,5 +1,5 @@
 import requests
-from database import Database
+
 
 class Pokemon:
     """ A Pokemon with Name, Artwork, Attack, Defense and Type stored for database input"""
@@ -10,6 +10,7 @@ class Pokemon:
         self.__attack = attack
         self.__defense = defense
         self.__types = types
+
 
 def getPokemon(database):
     r = requests.get(f'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
@@ -52,3 +53,6 @@ def getPokemon(database):
             database.addPokemon(input_data)
         else:
             pass
+
+
+

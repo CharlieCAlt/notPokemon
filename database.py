@@ -3,7 +3,6 @@ import sqlite3
 from sqlite3 import Error
 import config
 
-
 class Database:
     def __init__(self):
         try:
