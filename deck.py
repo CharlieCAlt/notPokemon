@@ -43,5 +43,5 @@ class Deck:
 
     def get_types(self, deck, counter):
         database = Database()
-        defense = database.get_types(deck, counter)
-        return defense
+        types = database.get_types(deck, counter)
+        return types

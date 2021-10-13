@@ -38,12 +38,12 @@ class Game:
         defender = self.defender
         deck = self.deck
         attack = (deck.get_attack(attacker.deck, deck.counter))[0]
-        print(type(attack))
         defense = deck.get_defense(defender.deck, deck.counter)[0]
-        # Get type
-        # modify damage based on type
-        # type_attacker = get_type(self.attacker)
-        # type_defender = get_type(self.defender)
+        # Need the player to choose a type for attacker
+        type_attacker, type_attacker1 = self.get_types(self.attacker)
+        type_defender, type_defender1 = self.get_types(self.defender)
+        damage_modifier = self.damageModifier(type_attacker, type_defender, type_defender1)
+        attack *= damage_modifier
         if attack > defense:
             result = 'won'
             attacker.deck.append(defender.deck[deck.counter])
@@ -56,8 +56,9 @@ class Game:
             self.defender = attacker
         return result
 
-    def get_types(self):
-        pass
+    def get_types(self, player):
+        types = self.deck.get_types(player.deck, self.deck.counter)
+        return types[0], types[1]
 
 
     def finish(self):
