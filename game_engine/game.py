@@ -1,5 +1,5 @@
 from deck import Deck
-from player import Player
+from game_engine.player import Player
 import requests
 
 

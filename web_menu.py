@@ -5,11 +5,9 @@ import pokemon_download
 from game_engine.game import Game
 
 app = Flask(__name__)
-database = Database()
 button_count = 0
 
-initial = Game()
-
+var = Game()
 
 
 @app.route("/")
@@ -20,7 +18,7 @@ def index():
 @app.route("/game")
 def game():
     global var
-    if len(var.deck_a) ==0:
+    if len(var.player_1.deck_a) ==0:
         deck=Deck()
         var.deck_a, var.deck_b = deck.shuffle()
         return redirect("/")
@@ -32,27 +30,26 @@ def game():
 def startA():
     global var
     database = Database()
-    values = database.pokemonData(var.deck_a, var.counterA)
+    values = database.pokemonData(var.player_1, var.counterA)
     name, attack, defense, type1, type2 = values
-    remaining_a = len(var.deck_a) - var.counterA
+    remaining_a = len(var.player_1) - var.counterA
     if remaining_a == 0:
         var.counterA = 0
-        remaining_a = len(var.deck_a) - var.counterA
-    return render_template('cardStatsA.html', deck_a=var.deck_a, name=name, attack=attack, defense=defense, type1=type1,
+        remaining_a = len(var.player_1) - var.counterA
+    return render_template('cardStatsA.html', deck_a=var.player_1, name=name, attack=attack, defense=defense, type1=type1,
                            type2=type2, counter1=var.counterA, remaining1=remaining_a)
-
 
 @app.route("/startB")
 def startB():
     global var
     database = Database()
-    values = database.pokemonData(var.deck_b, var.counterB)
+    values = database.pokemonData(var.player_2, var.counterB)
     name, attack, defense, type1, type2 = values
-    remaining_b = len(var.deck_b) - var.counterB
+    remaining_b = len(var.player_2) - var.counterB
     if remaining_b == 0:
         var.counterB = 0
-        remaining_b = len(var.deck_b) - var.counterB
-    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=name, attack2=attack, defense2=defense,
+        remaining_b = len(var.player_2) - var.counterB
+    return render_template('cardStatsB.html', deck_b=var.player_2, name2=name, attack2=attack, defense2=defense,
                            typeB1=type1, typeB2=type2, counter2=var.counterB, remaining2=remaining_b)
 
 
@@ -60,14 +57,14 @@ def startB():
 def cardA():
     global var
     var.counterA += 1
-    remaining_a = len(var.deck_a) - var.counterA
+    remaining_a = len(var.player_1) - var.counterA
     if remaining_a == 0:
         var.counterA = 0
-        remaining_a = len(var.deck_a) - var.counterA
+        remaining_a = len(var.player_1) - var.counterA
     database = Database()
-    values = database.pokemonData(var.deck_a, var.counterA)
+    values = database.pokemonData(var.player_1, var.counterA)
     name, attack, defense, type1, type2 = values
-    return render_template('cardStatsA.html', deck_a=var.deck_a, name=name, attack=attack, defense=defense, type1=type1,
+    return render_template('cardStatsA.html', deck_a=var.player_1, name=name, attack=attack, defense=defense, type1=type1,
                            type2=type2, counter1=var.counterA, remaining1=remaining_a)
 
 
@@ -75,14 +72,14 @@ def cardA():
 def cardB():
     global var
     var.counterB += 1
-    remaining_b = len(var.deck_b) - var.counterB
+    remaining_b = len(var.player_2) - var.counterB
     if remaining_b == 0:
         var.counterB = 0
-        remaining_b = len(var.deck_b) - var.counterB
+        remaining_b = len(var.player_2) - var.counterB
     database = Database()
-    values = database.pokemonData(var.deck_b, var.counterB)
+    values = database.pokemonData(var.player_2, var.counterB)
     name, attack, defense, type1, type2 = values
-    return render_template('cardStatsB.html', deck_b=var.deck_b, name2=name, attack2=attack, defense2=defense,
+    return render_template('cardStatsB.html', deck_b=var.player_2, name2=name, attack2=attack, defense2=defense,
                            typeB1=type1, typeB2=type2, counter2=var.counterB, remaining2=remaining_b)
 
 
@@ -98,6 +95,7 @@ def display_pokedex():
 
 @app.route("/downloadPokemons")
 def download_pokemons():
+    database = Database()
     global button_count
     if button_count % 2 == 0:
         database.delete_table()
@@ -109,11 +107,16 @@ def download_pokemons():
     button_count += 1
     names = database.returnNames()
     names_list = names.values.tolist()
+    deck = Deck()
+    deck_a, deck_b = deck.shuffle()
+    var.player_1.deck = deck_a
+    var.player_2.deck = deck_b
     return render_template('pokedex.html', names=names_list, alert=alert)
 
 
 @app.route("/showPokemons")
 def show_pokemons():
+    database = Database()
     names = database.returnNames()
     names_list = names.values.tolist()
     name = request.args.get('name')

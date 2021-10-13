@@ -49,10 +49,6 @@
 </audio>
 
 
-<audio id="bestAudio">
-    <source src="static/Pokemon_song_send_help.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 var x = document.getElementById("gameAudio");
 
@@ -63,14 +59,6 @@ function playAudio() {
 function pauseAudio() {
   x.pause();
 }
-
-
-var a = document.getElementById("bestAudio");
-
-function getPumped() {
-    a.play();
-}
-
 
 </script>
 
@@ -114,11 +102,15 @@ function getPumped() {
 
 <div class="container">
     <div class="column horizontal-centre">
-        <button class="bg-warning" onclick=""
-        <button class="bg-warning" onclick="nextButton1(); nextButton2(), style.display='none'" > Attack! </button>
+        <button class="bg-warning" onclick="nextButton1(); nextButton2()," > Attack! </button>
         <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>
         <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>
     </div>
+<!--    <div class=" column horizontal-centre">-->
+<!--        <form action="/PLACEHOLDER">-->
+<!--            <label for="pokemonType"> Choose </label>-->
+<!--        </form>-->
+<!--    </div>-->
 </div>
 
 
