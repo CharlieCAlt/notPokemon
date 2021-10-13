@@ -20,8 +20,6 @@ class Game:
         self.player_2 = Player(2)
         self.player_1.deck = deck_a
         self.player_2.deck = deck_b
-        self.counter_1 = self.player_1.counter
-        self.counter_2 = self.player_2.counter
         self.attacker = None
         self.defender = None
         self.finished = False
