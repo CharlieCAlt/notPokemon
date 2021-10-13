@@ -34,7 +34,7 @@
   }
   function startButton2() {
     $.ajax({
-        url: "startB",
+        url: "/startB",
         type: "get",
         data: {},
         success: function(response) {
@@ -43,6 +43,29 @@
         error: function(err) {}
     });
   }
+
+   function first_pokemon_type() {
+    $.ajax({
+        url: "/initial_pokemon_type",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#initialType").html(response)
+           },
+         error: function(err) {}
+    });
+ }
+    function second_pokemon_type() {
+    $.ajax({
+        url: "/second_pokemon_type",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#secondType").html(response)
+           },
+         error: function(err) {}
+    });
+ }
 </script>
 <audio id="gameAudio">
     <source src="static/Game_Music.mp3" type="audio/mpeg">
@@ -65,7 +88,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startButton1(); startButton2(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startButton1(); startButton2(); first_pokemon_type(); second_pokemon_type(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -83,26 +106,26 @@ function pauseAudio() {
 
 
 <div class="container">
-    <div class="column horizontal-centre">
-        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type1}} </button>
-        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>
-        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>
-        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>
-    </div>
-<!--    <div class=" column horizontal-centre">-->
-<!--        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>-->
-<!--        <form action="submitscript.php" target="dummyframe">-->
-<!--            <label> Choose an attack type: </label>-->
-<!--            <select name="types" id="types" required>-->
-<!--                <option value="">None</option>-->
-<!--                <option value="{{type1}}">{{type1}}</option>-->
-<!--                <option value="{{type2}}">{{type2}}</option>-->
-<!--            </select>-->
-<!--            <input type="submit" value="Attack" onclick="nextButtonA(); nextButtonB()">-->
-<!--        </form>-->
+<!--    <div class="column horizontal-centre">-->
+<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB(); first_pokemon_type()"> Attack using <div id="initial_pokemon_type"></div> </button>-->
+<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>-->
+<!--        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>-->
+<!--        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>-->
 <!--    </div>-->
-</div>
+    <div class=" column horizontal-centre">
+        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
+        <form action="submitscript.php" target="dummyframe">
+            <label> Choose an attack type: </label>
+            <select name="types" id="types" required>
+                <option value="">None</option>
+                <option value="{{type1}}" id="initialType"></option>
+                <option value="{{type2}}" id="secondType"></option>
+            </select>
+            <input class="bg-primary" type="submit" value="Attack" onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()">
+        </form>
+    </div>
 
+</div>
 
 <div style="margin:10px;"></div>
 

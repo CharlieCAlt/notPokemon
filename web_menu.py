@@ -90,6 +90,21 @@ def cardB():
 def test():
     return render_template('test.html')
 
+@app.route("/initial_pokemon_type")
+def find_initial_type():
+    database = Database()
+    values = database.pokemonData(var.player_1.deck, var.player_1.counter)
+    name, attack, defense, type1, type2 = values
+    return render_template('initial_pokemon_type.html' , initial_pokemon_type=type1)
+
+@app.route("/second_pokemon_type")
+def find_second_type():
+    database = Database()
+    values = database.pokemonData(var.player_1.deck, var.player_1.counter)
+    name, attack, defense, type1, type2 = values
+    print(type2)
+    return render_template('second_pokemon_type.html' , second_pokemon_type=type2)
+
 
 @app.route("/pokedex")
 def display_pokedex():
