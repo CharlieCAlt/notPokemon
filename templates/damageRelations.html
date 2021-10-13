@@ -23,7 +23,7 @@
 
 <br>
 
-<form action="/damageRelations" method="get">
+<form action="/showDamageRelations" method="get">
 <label>Choose a pokemon:</label>
   <select name="name">
     {% for item in types %}
@@ -33,9 +33,16 @@
 <input type="submit"/>
 </form>
 
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-warning text-center" id="relations">
+        <h1>Double damage to</h1>
+        {%for item in double_damage_to%}
+        <p> {{item}} </p>
+        {% endfor %}
+    </div>
+</div>
 
 
 </main>
-
 <body/>
 {% endblock %}

@@ -59,10 +59,9 @@ def typeURL(name):
     r = requests.get("https://pokeapi.co/api/v2/type/")
     response = r.json()
     results = response["results"]
-    for type in results:
-        typeName = type["name"]
-        if typeName == type[name]:
-            typeUrl = type["url"]
+    for item in results:
+        if item['name'] == name:
+            typeUrl = item["url"]
     return typeUrl
 
 
