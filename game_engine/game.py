@@ -9,10 +9,10 @@ import requests
 class Game:
 
     def __init__(self):
-        database = Database()
-        database.delete_table()
-        database.createTables()
-        pokemon_download.getPokemon(database)
+        # database = Database()
+        # database.delete_table()
+        # database.createTables()
+        # pokemon_download.getPokemon(database)
         self.deck = Deck()
         deck_a, deck_b = self.deck.shuffle()
         self.player_1 = Player(1)

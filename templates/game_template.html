@@ -106,11 +106,15 @@ function pauseAudio() {
         <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>
         <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>
     </div>
-<!--    <div class=" column horizontal-centre">-->
-<!--        <form action="/PLACEHOLDER">-->
-<!--            <label for="pokemonType"> Choose </label>-->
-<!--        </form>-->
-<!--    </div>-->
+    <div class=" column horizontal-centre">
+        <form action="/PLACEHOLDER">
+            <label> Choose an attack type: </label>
+            <select name="types" required>
+                <option value="">{{type1}}</option>
+                <option value="">{{type2}}</option>
+            </select>
+        </form>
+    </div>
 </div>
 
 
