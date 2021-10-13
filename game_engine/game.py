@@ -4,15 +4,18 @@ import numpy as np
 from database import Database
 import pokemon_download
 import requests
+import sqlite3
 
 
 class Game:
 
     def __init__(self):
-        # database = Database()
-        # database.delete_table()
-        # database.createTables()
-        # pokemon_download.getPokemon(database)
+        database = Database()
+        try:
+            database.delete_table()
+        except sqlite3.OperationalError:
+            pass
+        database.createTables()
         self.deck = Deck()
         deck_a, deck_b = self.deck.shuffle()
         self.player_1 = Player(1)
@@ -24,7 +27,7 @@ class Game:
         self.finished = False
 
     def choose_attacker(self):
-        number = np.random.randint(1,3)
+        number = np.random.randint(1, 3)
         if number == 1:
             self.attacker = self.player_1
             self.defender = self.player_2
