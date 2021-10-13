@@ -109,6 +109,17 @@ class Database:
         data = self.cursor.fetchone()
         return data
 
+    def get_types(self, deck, counter):
+        pokemon_find = deck[counter]
+        find_pokemon = """
+                    SELECT Type1, Type2
+                    FROM Pokedex
+                    WHERE ID=?
+                            """
+        self.cursor.execute(find_pokemon, (pokemon_find,))
+        data = self.cursor.fetchone()
+        return data
+
 
 
 

@@ -3,7 +3,6 @@ from game_engine.player import Player
 import numpy as np
 from database import Database
 import pokemon_download
-from player import Player
 import requests
 
 
@@ -38,8 +37,10 @@ class Game:
         attacker = self.attacker
         defender = self.defender
         deck = self.deck
-        attack = deck.get_attack(attacker.deck, deck.counter)
-        defense = deck.get_defense(defender.deck, deck.counter)
+        attack = (deck.get_attack(attacker.deck, deck.counter))[0]
+        print(type(attack))
+        defense = deck.get_defense(defender.deck, deck.counter)[0]
+        # Get type
         # modify damage based on type
         # type_attacker = get_type(self.attacker)
         # type_defender = get_type(self.defender)
@@ -54,6 +55,10 @@ class Game:
             self.attacker = defender
             self.defender = attacker
         return result
+
+    def get_types(self):
+        pass
+
 
     def finish(self):
         winner = None
