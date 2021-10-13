@@ -33,5 +33,15 @@ class Deck:
 
     def get_attack(self, deck, counter):
         database = Database()
-        attack = database.pokemonData(deck, counter)
+        attack = database.get_attack(deck, counter)
         return attack
+
+    def get_defense(self, deck, counter):
+        database = Database()
+        defense = database.get_defense(deck, counter)
+        return defense
+
+    def get_types(self, deck, counter):
+        database = Database()
+        types = database.get_types(deck, counter)
+        return types
