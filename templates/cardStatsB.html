@@ -15,20 +15,21 @@
     });
   }
 
-  function ifDefender() {
-  if (
 </script>
 
 
 <div class="container" id="cardset">
     <div class="card bg-danger text-white">
         <div class="card-block text-center">
-            <p class="text-left"> Cards left: {{remaining2}}</p>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_b[counter2]}}.png" width="150" height="150"/>
-            <h3 class="card-title text-center"> {{name2}} </h3>
-            <p class="text-center"> Attack: {{attack2}} </p>
-            <p class="text-center"> Defense: {{defense2}} </p>
-            <p class="text-center"> Types: {{typeB1}}  {{typeB2}} </p>
+            <img class="card-img-top" src="static/blank_card.jpg" alt="card go here" style="width:100%; height:395px">
+            <div class="card-img-overlay">
+                <p class="text-left text-dark"> Cards left: {{remaining2}}</p>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_b[counter2]}}.png" width="165" height="165"/>
+                <h3 class="card-title text-center text-dark"> {{name2}} </h3>
+                <p class="text-centern text-dark"> Attack: {{attack2}} </p>
+                <p class="text-center text-dark"> Defense: {{defense2}} </p>
+                <p class="text-center text-dark"> Types: {{typeB1}}  {{typeB2}} </p>
+            </div>
         </div>
     </div>
 </div>

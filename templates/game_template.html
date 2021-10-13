@@ -75,26 +75,8 @@ function pauseAudio() {
         <div class="col-md-6 col-lg-3">
             <div id="cardA"></div>
         </div>
-        <div class="col-md-6 col-lg-3">
-             <div class="card-block text-center">
-               <img src="static/pokemon_card_rear.png" alt="card go here" style="width:250px; height:395px">
-             </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-            <div id="cardB"></div>
-        </div>
-                <div class="col-md-6 col-lg-3">
-             <div class="card-block text-center">
-               <img class="card-img-top" src="static/blank_card.jpg" alt="card go here" style="width:100%; height:395px">
-                 <div class="card-img-overlay">
-                     <h4 class="card-title">Dragon</h4>
-                     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png" width ="200" height ="200"/>
-                     <p></p>
-                     <p></p>
-                     <p class="card-text">This is a test</p>
-
-                 </div>
-             </div>
+            <div class="col-md-6 col-lg-3">
+                <div id="cardB"></div>
         </div>
     </div>
 </div>
@@ -102,19 +84,23 @@ function pauseAudio() {
 
 <div class="container">
     <div class="column horizontal-centre">
-        <button class="bg-warning" onclick="nextButton1(); nextButton2()," > Attack! </button>
+        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type1}} </button>
+        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>
         <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>
         <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>
     </div>
-    <div class=" column horizontal-centre">
-        <form action="/PLACEHOLDER">
-            <label> Choose an attack type: </label>
-            <select name="types" required>
-                <option value="">{{type1}}</option>
-                <option value="">{{type2}}</option>
-            </select>
-        </form>
-    </div>
+<!--    <div class=" column horizontal-centre">-->
+<!--        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>-->
+<!--        <form action="submitscript.php" target="dummyframe">-->
+<!--            <label> Choose an attack type: </label>-->
+<!--            <select name="types" id="types" required>-->
+<!--                <option value="">None</option>-->
+<!--                <option value="{{type1}}">{{type1}}</option>-->
+<!--                <option value="{{type2}}">{{type2}}</option>-->
+<!--            </select>-->
+<!--            <input type="submit" value="Attack" onclick="nextButtonA(); nextButtonB()">-->
+<!--        </form>-->
+<!--    </div>-->
 </div>
 
 
