@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+{% block content %}
 
-</body>
-</html>
+<div class="container" id="cardset">
+        <div class="col-md-6 col-lg-3">
+             <div class="card-block text-center">
+                 <img src="static/pokemon_card_rear.png" alt="back of card" style="width:250px; height:395px">
+             </div>
+        </div>
+</div>
+{% endblock %}
