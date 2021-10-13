@@ -133,5 +133,11 @@ def show_pokemons():
                            attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5],
                            type2=data_list[0][6])
 
+@app.route("/damageRelations")
+def damage_relations():
+    types = database.get_all_types()
+    types_list = types.values.tolist()
+    return render_template('damageRelations.html', types=types_list)
+
 
 if __name__ == "__main__": app.run()

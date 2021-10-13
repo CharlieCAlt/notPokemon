@@ -15,7 +15,7 @@
 
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-warning text-center" id="home">
-        <h1>Pokedex</h1>
+        <h1>Damage Relations</h1>
     </div>
 </div>
 
@@ -57,10 +57,10 @@ function showDiv() {
 
 <br>
 
-<form action="/showPokemons" method="get">
+<form action="/damageRelations" method="get">
 <label>Choose a pokemon:</label>
   <select name="name">
-    {% for item in names %}
+    {% for item in types %}
     <option value="{{item[0]}}">{{item[0]}}</option>
     {% endfor %}
   </select>
