@@ -98,3 +98,12 @@ class Database:
         data = self.cursor.fetchone()
         return data
 
+    def get_all_types(self):
+        get_types = """
+                    SELECT DISTINCT Type1, Type2
+                    FROM Pokedex
+                            """
+        data = pd.read_sql_query(get_types, self.conn)
+        return data
+
+
