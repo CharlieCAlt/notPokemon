@@ -34,6 +34,8 @@ class Game:
         if number == 2:
             self.attacker = self.player_2
             self.defender = self.player_1
+        # return self.attacker to determine whether the player is attacking or defending
+        #return self.attacker
 
     def attack(self):
         attacker = self.attacker

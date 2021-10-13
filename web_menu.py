@@ -102,7 +102,6 @@ def find_second_type():
     database = Database()
     values = database.pokemonData(var.player_1.deck, var.player_1.counter)
     name, attack, defense, type1, type2 = values
-    print(type2)
     return render_template('second_pokemon_type.html' , second_pokemon_type=type2)
 
 
@@ -143,6 +142,12 @@ def show_pokemons():
     return render_template('card.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
                            attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5],
                            type2=data_list[0][6])
+
+@app.route("/rules")
+def game_rules():
+    return render_template('Game_Rules.html')
+
+
 
 
 if __name__ == "__main__": app.run()
