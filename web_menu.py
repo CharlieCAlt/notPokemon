@@ -24,7 +24,10 @@ def game():
         var.player_1.deck, var.player_2.deck = deck.shuffle()
         return redirect("/")
     else:
-        return render_template('game_template.html')
+        database = Database()
+        values = database.pokemonData(var.player_1.deck, var.player_1.counter)
+        name, attack, defense, type1, type2 = values
+        return render_template('game_template.html', type1=type1, type2=type2)
 
 
 @app.route("/cardBack")
