@@ -2,6 +2,7 @@ from deck import Deck
 from flask import Flask, render_template, request, redirect
 from database import Database
 import pokemon_download
+from game_engine.game import Game
 
 app = Flask(__name__)
 
@@ -9,18 +10,7 @@ database = Database()
 
 button_count = 0
 
-class Button:
-    def __init__(self):
-        database.createTables()
-        self.deck_a = []
-        self.deck_b = []
-        self.counterA = 0
-        self.counterB = 0
-        deck = Deck()
-        self.deck_a, self.deck_b = deck.shuffle()
-
-
-var = Button()
+initial = Game()
 
 @app.route("/")
 def index():
