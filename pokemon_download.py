@@ -1,5 +1,6 @@
 import requests
 
+
 class Pokemon:
     """ A Pokemon with Name, Artwork, Attack, Defense and Type stored for database input"""
 
@@ -9,6 +10,7 @@ class Pokemon:
         self.__attack = attack
         self.__defense = defense
         self.__types = types
+
 
 def getPokemon(database):
     r = requests.get(f'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
@@ -36,6 +38,7 @@ def getPokemon(database):
                 types = (type1, type2)
             except IndexError:
                 types = type1
+                type2 = ''
             for data in results:
                 figure = data['stat']
                 if figure['name'] == 'attack':
@@ -44,8 +47,12 @@ def getPokemon(database):
                     defense = data['base_stat']
                 else:
                     pass
-            input_data = (pokenumber, name, artwork, attack, defense, str(types))
+            input_data = (pokenumber, name, artwork, attack, defense, type1, type2)
             pokenumber += 1
+            database.createTables()
             database.addPokemon(input_data)
         else:
             pass
+
+
+

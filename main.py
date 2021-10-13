@@ -9,6 +9,8 @@ def main():
     game.choose_attacker()
     print(game.attacker)
     game.attack()
+    print(pokemon_download.damageModifier('fighting', 'rock', ''))
+
 
 
 if __name__ == '__main__':
