@@ -21,40 +21,6 @@
 
 <main id=app>
 
-<div id="download">
-<form id="messageForm" action="/downloadPokemons" method="get">
-    <input type="submit" value="Download Pokemons" onclick="alertMessage(); hideDiv()" />
-</form>
-</div>
-
-  <script src="demo_script_src.js">
-</script>
-
-
-<script>
-function alertMessage() {
-  if ("{{alert}}" == "Do you want to override pokemon data? If yes, click Download Pokemons again") {
-  window.alert("{{alert}}");
-  }
-}
-function hideDiv() {
-  var x = document.getElementById("download");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-function showDiv() {
-  var x = document.getElementById("show");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>
-
 <br>
 
 <form action="/damageRelations" method="get">
@@ -64,11 +30,10 @@ function showDiv() {
     <option value="{{item[0]}}">{{item[0]}}</option>
     {% endfor %}
   </select>
-<input type="submit" onclick="showDiv()"/>
+<input type="submit"/>
 </form>
 
 
-<style class="hover"></style>
 
 </main>
 

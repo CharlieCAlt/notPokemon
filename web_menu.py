@@ -139,5 +139,10 @@ def damage_relations():
     types_list = types.values.tolist()
     return render_template('damageRelations.html', types=types_list)
 
+@app.route("/showDamageRelations")
+def show_damage_relations():
+    name = request.args.get('name')
+    pokemon_download.get_relations_types(name)
+    return render_template('damageRelations.html')
 
 if __name__ == "__main__": app.run()
