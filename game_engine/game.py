@@ -36,14 +36,13 @@ class Game:
             self.attacker = self.player_2
             self.defender = self.player_1
 
-    def attack(self):
+    def attack(self, type_attacker):
         attacker = self.attacker
         defender = self.defender
         deck = self.deck
         attack = deck.get_attack(attacker.deck, attacker.counter)[0]
         defense = deck.get_defense(defender.deck, defender.counter)[0]
         # Need the player to choose a type for attacker
-        type_attacker, type_attacker1 = self.get_types(self.attacker)
         type_defender, type_defender1 = self.get_types(self.defender)
         damage_modifier = self.damageModifier(type_attacker, type_defender, type_defender1)
         attack *= damage_modifier
