@@ -4,6 +4,7 @@ import numpy as np
 from database import Database
 import pokemon_download
 import requests
+import sqlite3
 
 
 
@@ -11,9 +12,11 @@ class Game:
 
     def __init__(self):
         database = Database()
-        database.delete_table()
+        try:
+            database.delete_table()
+        except sqlite3.OperationalError:
+            pass
         database.createTables()
-        pokemon_download.getPokemon(database)
         self.deck = Deck()
         deck_a, deck_b = self.deck.shuffle()
         self.player_1 = Player(1)
