@@ -7,6 +7,7 @@ class Player:
         self.defender = False
         self.deck = None
         self.player_no = player_no
+        self.counter = 0
 
     def __str__(self):
         return f'Player {self.player_no}'

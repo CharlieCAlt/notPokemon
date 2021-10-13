@@ -20,6 +20,8 @@ class Game:
         self.player_2 = Player(2)
         self.player_1.deck = deck_a
         self.player_2.deck = deck_b
+        self.counter_1 = self.player_1.counter
+        self.counter_2 = self.player_2.counter
         self.attacker = None
         self.defender = None
         self.finished = False
@@ -37,7 +39,7 @@ class Game:
         attacker = self.attacker
         defender = self.defender
         deck = self.deck
-        attack = (deck.get_attack(attacker.deck, deck.counter))[0]
+        attack = deck.get_attack(attacker.deck, deck.counter)[0]
         defense = deck.get_defense(defender.deck, deck.counter)[0]
         # Need the player to choose a type for attacker
         type_attacker, type_attacker1 = self.get_types(self.attacker)
@@ -48,6 +50,7 @@ class Game:
             result = 'won'
             attacker.deck.append(defender.deck[deck.counter])
             del defender.deck[deck.counter]
+            # Might need to have two different counters for each player as when card is deleted counter needs to stay the same
         else:
             result = 'lost'
             defender.deck.append(attacker.deck[deck.counter])
