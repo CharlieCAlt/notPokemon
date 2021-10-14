@@ -1,6 +1,30 @@
 {% extends "game_layout.html" %}
 {% block title %}Home page{% endblock %}
 {% block content %}
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
 <html>
 <head>
   <link rel="stylesheet" href="static/style.css?id=1234">
@@ -34,36 +58,48 @@
 </form>
 
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
-    <div class="jumbotron bg-warning text-center" id="relations">
+    <table id = "customers">
         <h1> Type: </h1>
-        <h1>Double damage to</h1>
-        {%for item in double_damage_to%}
-        <p> {{item}} </p>
-        {% endfor %}
-        <h1>Half damage to</h1>
-        {%for item in half_damage_to%}
-        <p> {{item}} </p>
-        {% endfor %}
-        <h1>No damage to</h1>
-        {%for item in no_damage_to%}
-        <p> {{item}} </p>
-        {% endfor %}
-        <h1>Double damage from</h1>
-        {%for item in double_damage_from%}
-        <p> {{item}} </p>
-        {% endfor %}
-        <h1>Half damage from</h1>
-        {%for item in half_damage_from%}
-        <p> {{item}} </p>
-        {% endfor %}
-        <h1>no damage from</h1>
-        {%for item in no_damage_from%}
-        <p> {{item}} </p>
-        {% endfor %}
-    </div>
+        <TR>
+            <TH>Double damage to</TH>
+            {%for item in double_damage_to%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>Half damage to</TH>
+            {%for item in half_damage_to%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>No damage to</TH>
+            {%for item in no_damage_to%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>Double damage from</TH>
+            {%for item in double_damage_from%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>Half damage from</TH>
+            {%for item in half_damage_from%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>No damage from</TH>
+            {%for item in no_damage_from%}
+            <<TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+    </table>
 </div>
 
 
 </main>
-<body/>
+</body>
 {% endblock %}
