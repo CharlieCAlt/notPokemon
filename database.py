@@ -98,6 +98,28 @@ class Database:
         data = self.cursor.fetchone()
         return data
 
+    def get_defense(self, deck, counter):
+        pokemon_find = deck[counter]
+        find_pokemon = """
+                    SELECT Defense
+                    FROM Pokedex
+                    WHERE ID=?
+                            """
+        self.cursor.execute(find_pokemon, (pokemon_find,))
+        data = self.cursor.fetchone()
+        return data
+
+    def get_types(self, deck, counter):
+        pokemon_find = deck[counter]
+        find_pokemon = """
+                    SELECT Type1, Type2
+                    FROM Pokedex
+                    WHERE ID=?
+                            """
+        self.cursor.execute(find_pokemon, (pokemon_find,))
+        data = self.cursor.fetchone()
+        return data
+
     def get_all_types(self):
         get_types = """
                     SELECT Type1
@@ -108,5 +130,6 @@ class Database:
                     """
         data = pd.read_sql_query(get_types, self.conn)
         return data
+
 
 
