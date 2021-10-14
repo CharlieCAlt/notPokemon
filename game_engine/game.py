@@ -12,10 +12,10 @@ class Game:
 
     def __init__(self):
         database = Database()
-        try:
-            database.delete_table()
-        except sqlite3.OperationalError:
-            pass
+        # try:
+        #     database.delete_table()
+        # except sqlite3.OperationalError:
+        #     pass
         database.createTables()
         self.deck = Deck()
         deck_a, deck_b = self.deck.shuffle()

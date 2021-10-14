@@ -158,10 +158,20 @@ def download_pokemons():
 
 @app.route("/attackPokemon")
 def attack_pokemons():
-    choice=request.args.get('attackType')
-    print(choice)
-    game=Game()
-    result=var.attack(choice)
+    if var.attacker.player_no == 1:
+        choice=request.args.get('attackType')
+        print('Player 1 attacks with:')
+        print(choice)
+        result=var.attack(choice)
+    elif var.attacker.player_no == 2:
+        database = Database()
+        values = database.pokemonData(var.player_2.deck)
+        name, attack, defense, type1, type2 = values
+        result=var.attack(type1)
+        print('Player 2 attacks with:')
+        print(type1)
+    else:
+        print('oops')
     print(result)
     if result == 'won':
         pass
@@ -235,5 +245,12 @@ def adjective():
     phrase = f'The {adjectives[random.randint(0, len(adjectives))]}, the {adjectives[random.randint(0, len(adjectives))]}, the downright {adjectives[random.randint(0, len(adjectives))]}'
     return render_template('adjective.html', phrase=phrase)
 
+@app.route("/updateTurn")
+def updateTurn():
+    if var.attacker.player_no == 1:
+        option = 'Attacker'
+    else:
+        option = 'Defender'
+    return render_template('turn.html', option=option)
 
 if __name__ == "__main__": app.run()

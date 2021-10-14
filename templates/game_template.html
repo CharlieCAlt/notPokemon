@@ -109,6 +109,17 @@
          error: function(err) {}
     });
  }
+ function updateTurn() {
+    $.ajax({
+        url: "/updateTurn",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#yourMove").html(response)
+           },
+         error: function(err) {}
+        });
+ }
 <!-- function winner() {-->
 <!--    $.ajax({-->
 <!--        url: "/winner",-->
@@ -169,7 +180,11 @@ function pauseAudio() {
 <div class="margin:10px"></div>
 <div class="container" id="attackForm"></div>
 
-<button onclick="start()">Next</button>
+<div class="container align-center">
+    <button onclick="start(); updateTurn()">Next</button>
+    <button onclick="flip()"> Reveal </button>
+</div>
+
 
 
 {% endblock %}
