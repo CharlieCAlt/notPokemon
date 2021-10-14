@@ -57,7 +57,10 @@
 
 
     <table id = "customers">
-        <h1> Type: {{name}} </h1>
+        <TR>
+            <TH> Type </TH>
+            <TD>{{name}}</TD>
+        </TR>
         <TR>
             <TH>Double damage to</TH>
             {%for item in double_damage_to%}
