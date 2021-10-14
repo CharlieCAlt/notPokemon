@@ -26,7 +26,13 @@ def game():
         database = Database()
         values = database.pokemonData(var.player_1.deck, var.player_1.counter)
         name, attack, defense, type1, type2 = values
-        return render_template('game_template.html', type1=type1, type2=type2)
+        turn = var.choose_attacker()
+        if turn == var.player_1:
+            option = 'Attacker'
+        elif turn == var.player_2:
+            option = 'Defender'
+        print(option)
+        return render_template('game_template.html', type1=type1, type2=type2, option=option)
 
 
 @app.route("/startA")
