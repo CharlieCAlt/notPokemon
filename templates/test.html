@@ -64,9 +64,10 @@ canvas {
 var myGamePiece;
 var myObstacles = [];
 var myScore;
+
 <!--Could change the square to pikachu?-->
 function startGame() {
-    myGamePiece = new component(30, 30, "blue", 10, 120, "image");
+    myGamePiece = new component(30, 30, "red", 10, 120, "image");
     myGamePiece.gravity = 0.05;
     myScore = new component("30px", "Consolas", "black", 280, 40, "text");
     myGameArea.start();

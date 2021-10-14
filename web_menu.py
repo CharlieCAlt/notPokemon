@@ -32,7 +32,13 @@ def game():
             card = cardB
         if var.attacker.player_no == 2:
             card = cardA
-        return render_template('game_template.html', type1=type1, type2=type2, card=card)
+        turn = var.choose_attacker()
+        if turn == var.player_1:
+            option = 'Attacker'
+        elif turn == var.player_2:
+            option = 'Defender'
+        print(option)
+        return render_template('game_template.html', type1=type1, type2=type2, card=card, option=option)
 
 
 @app.route("/cardBack")
@@ -144,6 +150,20 @@ def cardB():
 def test():
     return render_template('test.html')
 
+@app.route("/initial_pokemon_type")
+def find_initial_type():
+    database = Database()
+    values = database.pokemonData(var.player_1.deck, var.player_1.counter)
+    name, attack, defense, type1, type2 = values
+    return render_template('initial_pokemon_type.html' , initial_pokemon_type=type1)
+
+@app.route("/second_pokemon_type")
+def find_second_type():
+    database = Database()
+    values = database.pokemonData(var.player_1.deck, var.player_1.counter)
+    name, attack, defense, type1, type2 = values
+    return render_template('second_pokemon_type.html' , second_pokemon_type=type2)
+
 
 @app.route("/pokedex")
 def display_pokedex():
@@ -170,6 +190,13 @@ def download_pokemons():
     var.player_2.deck = deck_b
     return render_template('pokedex.html', names=names_list, alert=alert)
 
+@app.route("/attackPokemon")
+def attack_pokemons():
+    print('Is this thing on?')
+    choice=request.args.get('types')
+    print(choice)
+    return render_template('Game_Rules.html')
+
 
 @app.route("/showPokemons")
 def show_pokemons():
@@ -182,6 +209,12 @@ def show_pokemons():
     return render_template('card.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
                            attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5],
                            type2=data_list[0][6])
+
+@app.route("/rules")
+def game_rules():
+    return render_template('Game_Rules.html')
+
+
 
 
 if __name__ == "__main__": app.run()

@@ -6,7 +6,8 @@
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-warning text-center" id="home">
         <h1>Pokemon: The Game</h1>
-        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life.</p>
+        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life.<br>
+         This round you are the {{option}} </p>
     </div>
 </div>
 
@@ -20,6 +21,8 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
 <script>
   function startA() {
     $.ajax({
@@ -77,7 +80,32 @@
         x.style.display = "none";
     }
   }
+
+   function first_pokemon_type() {
+    $.ajax({
+        url: "/initial_pokemon_type",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#initialType").html(response)
+           },
+         error: function(err) {}
+    });
+ }
+    function second_pokemon_type() {
+    $.ajax({
+        url: "/second_pokemon_type",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#secondType").html(response)
+           },
+         error: function(err) {}
+    });
+ }
 </script>
+
+
 <audio id="gameAudio">
     <source src="static/Game_Music.mp3" type="audio/mpeg">
 </audio>
@@ -99,17 +127,17 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startA(); startB(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
 
 <div class="container" id="cardset">
     <div class="row">
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-4">
             <div id="cardA"></div>
         </div>
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-4">
             <div id="cardB"></div>
         </div>
     </div>
@@ -118,7 +146,7 @@ function pauseAudio() {
 
 <div class="container">
 <!--    <div class="column horizontal-centre">-->
-<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type1}} </button>-->
+<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB(); first_pokemon_type()"> Attack using <div id="initial_pokemon_type"></div> </button>-->
 <!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>-->
 <!--        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>-->
 <!--        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>-->
@@ -147,8 +175,20 @@ function pauseAudio() {
         <h1>Game Rules</h1>
         <p class="lead">You will be playing against an AI opponent. <br> Each player has a deck of pokemon, equally split between them. <br>
             The aim is to take all of the cards from your opponent, completing your pokedex. </p>
+    <div class=" column horizontal-centre">
+        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
+        <form action= "/attackPokemon" target="dummyframe">
+            <label for="types"> Choose an attack type: </label>
+            <select name="types" id="types" required>
+                <option value="">None</option>
+                <option value="{{type1}}" id="initialType"></option>
+                <option value="{{type2}}" id="secondType"></option>
+            </select>
+            <input class="bg-primary" type="submit" value="Attack" onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()" >
+        </form>
     </div>
 </div>
 
 
+<!--onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()"-->
 {% endblock %}
