@@ -141,10 +141,12 @@ def damage_relations():
 
 @app.route("/showDamageRelations")
 def show_damage_relations():
+    types = database.get_all_types()
+    types_list = types.values.tolist()
     name = request.args.get('name')
     url = pokemon_download.typeURL(name)
     double_damage_to, half_damage_to, no_damage_to, double_damage_from, half_damage_from, no_damage_from = pokemon_download.get_relations_types(url)
     return render_template('damageRelations.html', double_damage_to=double_damage_to, half_damage_to=half_damage_to, no_damage_to=no_damage_to,
-                           double_damage_from=double_damage_from, half_damage_from=half_damage_from, no_damage_from=no_damage_from)
+                           double_damage_from=double_damage_from, half_damage_from=half_damage_from, no_damage_from=no_damage_from, types=types_list)
 
 if __name__ == "__main__": app.run()

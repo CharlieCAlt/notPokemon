@@ -35,8 +35,29 @@
 
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-warning text-center" id="relations">
+        <h1> Type: </h1>
         <h1>Double damage to</h1>
         {%for item in double_damage_to%}
+        <p> {{item}} </p>
+        {% endfor %}
+        <h1>Half damage to</h1>
+        {%for item in half_damage_to%}
+        <p> {{item}} </p>
+        {% endfor %}
+        <h1>No damage to</h1>
+        {%for item in no_damage_to%}
+        <p> {{item}} </p>
+        {% endfor %}
+        <h1>Double damage from</h1>
+        {%for item in double_damage_from%}
+        <p> {{item}} </p>
+        {% endfor %}
+        <h1>Half damage from</h1>
+        {%for item in half_damage_from%}
+        <p> {{item}} </p>
+        {% endfor %}
+        <h1>no damage from</h1>
+        {%for item in no_damage_from%}
         <p> {{item}} </p>
         {% endfor %}
     </div>
