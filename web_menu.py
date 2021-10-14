@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import pokemon_download
 from game_engine.game import Game
+import random
 
 app = Flask(__name__)
 button_count = 0
@@ -54,8 +55,8 @@ def cardFlipA():
     name, attack, defense, type1, type2 = values
     remaining_a = len(var.player_1.deck) - var.player_1.counter
     if remaining_a == 0:
-        var.player_1.counter = 0
-        remaining_a = len(var.player_1.deck) - var.player_1.counter
+        winner = 'Player 2'
+        return redirect(url_for('/winner', winner=winner))
     return render_template('cardStatsA.html', deck_a=var.player_1.deck, name=name, attack=attack, defense=defense,
                            type1=type1, type2=type2, counter1=var.player_1.counter, remaining1=remaining_a)
 
@@ -68,8 +69,8 @@ def cardFlipB():
     name, attack, defense, type1, type2 = values
     remaining_b = len(var.player_2.deck) - var.player_2.counter
     if remaining_b == 0:
-        var.player_2.counter = 0
-        remaining_b = len(var.player_2.deck) - var.player_2.counter
+        winner = 'Player 1'
+        return redirect(url_for('/winner', winner=winner))
     return render_template('cardStatsB.html', deck_b=var.player_2.deck, name2=name, attack2=attack, defense2=defense,
                            typeB1=type1, typeB2=type2, counter2=var.player_2.counter, remaining2=remaining_b)
 
@@ -82,8 +83,8 @@ def startA():
     name, attack, defense, type1, type2 = values
     remaining_a = len(var.player_1.deck) - var.player_1.counter
     if remaining_a == 0:
-        var.player_1.counter = 0
-        remaining_a = len(var.player_1.deck) - var.player_1.counter
+        winner = 'Player 2'
+        return redirect(url_for('/winner', winner=winner))
     if var.attacker.player_no == 1:
         return render_template('cardStatsA.html', deck_a=var.player_1.deck, name=name, attack=attack, defense=defense,
                                type1=type1, type2=type2, counter1=var.player_1.counter, remaining1=remaining_a)
@@ -99,8 +100,8 @@ def startB():
     name, attack, defense, type1, type2 = values
     remaining_b = len(var.player_2.deck) - var.player_2.counter
     if remaining_b == 0:
-        var.player_2.counter = 0
-        remaining_b = len(var.player_2.deck) - var.player_2.counter
+        winner = 'Player 1'
+        return redirect(url_for('/winner', winner=winner))
     if var.attacker.player_no == 2:
         return render_template('cardStatsB.html', deck_b=var.player_2.deck, name2=name, attack2=attack,
                                defense2=defense, typeB1=type1, typeB2=type2, counter2=var.player_2.counter,
@@ -115,8 +116,8 @@ def cardA():
     var.player_1.counter += 1
     remaining_a = len(var.player_1.deck) - var.player_1.counter
     if remaining_a == 0:
-        var.player_1.counter = 0
-        remaining_a = len(var.player_1.deck) - var.player_1.counter
+        winner = 'Player 2'
+        return redirect(url_for('/winner', winner=winner))
     database = Database()
     values = database.pokemonData(var.player_1.deck, var.player_1.counter)
     name, attack, defense, type1, type2 = values
@@ -133,8 +134,8 @@ def cardB():
     var.player_2.counter += 1
     remaining_b = len(var.player_2.deck) - var.player_2.counter
     if remaining_b == 0:
-        var.player_2.counter = 0
-        remaining_b = len(var.player_2.deck) - var.player_2.counter
+        winner = 'Player 1'
+        return redirect(url_for('/winner', winner=winner))
     database = Database()
     values = database.pokemonData(var.player_2.deck, var.player_2.counter)
     name, attack, defense, type1, type2 = values
@@ -210,11 +211,30 @@ def show_pokemons():
                            attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5],
                            type2=data_list[0][6])
 
+
 @app.route("/rules")
 def game_rules():
     return render_template('Game_Rules.html')
 
 
+@app.route("/winner")
+def win(winner):
+    return render_template('winner.html', winner=winner)
+    # if len(var.player_1.deck) - var.player_1.counter == 0:
+    #     winner = 'Player 2'
+    #     return render_template('winner.html', winner=winner)
+    # elif len(var.player_2.deck) - var.player_2.counter == 0:
+    #     winner = 'Player 1'
+    #     return render_template('winner.html', winner=winner)
+    # else:
+    #     return
+
+
+@app.route("/adjective")
+def adjective():
+    adjectives = ['victorious', 'conquering', 'successful', 'champion', 'best', 'amazing']
+    phrase = f'The {adjectives[random.randint(0, len(adjectives))]}, the {adjectives[random.randint(0, len(adjectives))]}, the downright {adjectives[random.randint(0, len(adjectives))]}'
+    return render_template('adjective.html', phrase=phrase)
 
 
 if __name__ == "__main__": app.run()

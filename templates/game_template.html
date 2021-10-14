@@ -72,7 +72,7 @@
     flipA();
     flipB();
   }
-   function first_pokemon_type() {
+  function first_pokemon_type() {
     $.ajax({
         url: "/initial_pokemon_type",
         type: "get",
@@ -83,7 +83,7 @@
          error: function(err) {}
     });
  }
-    function second_pokemon_type() {
+ function second_pokemon_type() {
     $.ajax({
         url: "/second_pokemon_type",
         type: "get",
@@ -94,6 +94,17 @@
          error: function(err) {}
     });
  }
+<!-- function winner() {-->
+<!--    $.ajax({-->
+<!--        url: "/winner",-->
+<!--        type: "get",-->
+<!--        data: {},-->
+<!--        success: function(response) {-->
+<!--            $("#winner").html(response)-->
+<!--           },-->
+<!--         error: function(err) {}-->
+<!--    });-->
+<!-- }-->
 </script>
 
 
@@ -122,6 +133,7 @@ function pauseAudio() {
     </div>
 </div>
 
+<div id="winner"></div>
 
 <div class="container" id="cardset">
     <div class="row">
@@ -151,8 +163,8 @@ function pauseAudio() {
                 <option value="{{type1}}" id="initialType"></option>
                 <option value="{{type2}}" id="secondType"></option>
             </select>
-            <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); show()">
-            <button id="continue" onclick="flip()">Continue</button>
+            <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip();">
+            <button id="continue" onclick="flip();">Continue</button>
         </form>
     </div>
 </div>
