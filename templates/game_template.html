@@ -6,8 +6,8 @@
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-warning text-center" id="home">
         <h1>Pokemon: The Game</h1>
-        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life.<br>
-         This round you are the {{option}} </p>
+        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life.</p>
+        <div id="yourMove"></div>
     </div>
 </div>
 
@@ -69,6 +69,17 @@
          error: function(err) {}
     });
  }
+    function chooseMove() {
+    $.ajax({
+        url: "/turnChoice",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#yourMove").html(response)
+           },
+         error: function(err) {}
+    });
+ }
 </script>
 
 
@@ -93,7 +104,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startButton1(); startButton2(); first_pokemon_type(); second_pokemon_type(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startButton1(); startButton2(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -129,7 +140,7 @@ function pauseAudio() {
             </select>
             <input class="bg-primary" type="submit" value="Attack" >
         </form>
-            <button onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()">Continue?</button>
+            <button onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type(); chooseMove()">Continue?</button>
         </div>
     </div>
 </div>
