@@ -21,7 +21,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-  function startButton1() {
+  function startA() {
     $.ajax({
         url: "/startA",
         type: "get",
@@ -32,9 +32,9 @@
         error: function(err) {}
     });
   }
-  function startButton2() {
+  function startB() {
     $.ajax({
-        url: "startB",
+        url: "/startB",
         type: "get",
         data: {},
         success: function(response) {
@@ -42,6 +42,40 @@
         },
         error: function(err) {}
     });
+  }
+  function flipA() {
+    $.ajax({
+        url: "/flipA",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#cardA").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+  function flipB() {
+    $.ajax({
+        url: "/flipB",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#cardB").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+  function flip() {
+    flipA();
+    flipB();
+  }
+  function show() {
+    var x = document.getElementById("continue");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
   }
 </script>
 <audio id="gameAudio">
@@ -65,7 +99,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startButton1(); startButton2(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startA(); startB(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -75,32 +109,33 @@ function pauseAudio() {
         <div class="col-md-6 col-lg-3">
             <div id="cardA"></div>
         </div>
-            <div class="col-md-6 col-lg-3">
-                <div id="cardB"></div>
+        <div class="col-md-6 col-lg-3">
+            <div id="cardB"></div>
         </div>
     </div>
 </div>
 
 
 <div class="container">
-    <div class="column horizontal-centre">
-        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type1}} </button>
-        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>
-        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>
-        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>
-    </div>
-<!--    <div class=" column horizontal-centre">-->
-<!--        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>-->
-<!--        <form action="submitscript.php" target="dummyframe">-->
-<!--            <label> Choose an attack type: </label>-->
-<!--            <select name="types" id="types" required>-->
-<!--                <option value="">None</option>-->
-<!--                <option value="{{type1}}">{{type1}}</option>-->
-<!--                <option value="{{type2}}">{{type2}}</option>-->
-<!--            </select>-->
-<!--            <input type="submit" value="Attack" onclick="nextButtonA(); nextButtonB()">-->
-<!--        </form>-->
+<!--    <div class="column horizontal-centre">-->
+<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type1}} </button>-->
+<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>-->
+<!--        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>-->
+<!--        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>-->
 <!--    </div>-->
+    <div class=" column horizontal-centre">
+        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
+        <form action="submitscript.php" target="dummyframe">
+            <label> Choose an attack type: </label>
+            <select name="types" id="types" required>
+                <option value="">None</option>
+                <option value="{{type1}}">{{type1}}</option>
+                <option value="{{type2}}">{{type2}}</option>
+            </select>
+            <input type="submit" value="Attack" onclick="flip(); show();">
+            <button id="continue" onclick="flip()">Continue</button>
+        </form>
+    </div>
 </div>
 
 

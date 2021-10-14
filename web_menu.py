@@ -1,5 +1,5 @@
 from deck import Deck
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from database import Database
 import pokemon_download
 from game_engine.game import Game
@@ -27,12 +27,46 @@ def game():
         database = Database()
         values = database.pokemonData(var.player_1.deck, var.player_1.counter)
         name, attack, defense, type1, type2 = values
-        return render_template('game_template.html', type1=type1, type2=type2)
+        card = None
+        if var.attacker.player_no == 1:
+            card = cardB
+        if var.attacker.player_no == 2:
+            card = cardA
+        return render_template('game_template.html', type1=type1, type2=type2, card=card)
 
 
 @app.route("/cardBack")
 def cardBack():
     return render_template("cardBack.html")
+
+
+@app.route("/flipA")
+def cardFlipA():
+    global var
+    database = Database()
+    values = database.pokemonData(var.player_1.deck, var.player_1.counter)
+    name, attack, defense, type1, type2 = values
+    remaining_a = len(var.player_1.deck) - var.player_1.counter
+    if remaining_a == 0:
+        var.player_1.counter = 0
+        remaining_a = len(var.player_1.deck) - var.player_1.counter
+    return render_template('cardStatsA.html', deck_a=var.player_1.deck, name=name, attack=attack, defense=defense,
+                           type1=type1, type2=type2, counter1=var.player_1.counter, remaining1=remaining_a)
+
+
+@app.route("/flipB")
+def cardFlipB():
+    global var
+    database = Database()
+    values = database.pokemonData(var.player_2.deck, var.player_2.counter)
+    name, attack, defense, type1, type2 = values
+    remaining_b = len(var.player_2.deck) - var.player_2.counter
+    if remaining_b == 0:
+        var.player_2.counter = 0
+        remaining_b = len(var.player_2.deck) - var.player_2.counter
+    return render_template('cardStatsB.html', deck_b=var.player_2.deck, name2=name, attack2=attack, defense2=defense,
+                           typeB1=type1, typeB2=type2, counter2=var.player_2.counter, remaining2=remaining_b)
+
 
 @app.route("/startA")
 def startA():
