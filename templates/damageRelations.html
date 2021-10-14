@@ -27,7 +27,6 @@
 </style>
 <html>
 <head>
-  <link rel="stylesheet" href="static/style.css?id=1234">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -43,10 +42,9 @@
     </div>
 </div>
 
-<main id=app>
-
 <br>
 
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
 <form action="/showDamageRelations" method="get">
 <label>Choose a pokemon:</label>
   <select name="name">
@@ -57,7 +55,7 @@
 <input type="submit"/>
 </form>
 
-<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+
     <table id = "customers">
         <h1> Type: {{name}} </h1>
         <TR>
@@ -100,6 +98,5 @@
 </div>
 
 
-</main>
 </body>
 {% endblock %}
