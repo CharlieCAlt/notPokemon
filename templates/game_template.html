@@ -140,7 +140,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startA(); startB(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -160,7 +160,7 @@ function pauseAudio() {
 
 <div class="container" id="attackForm"></div>
 
-<button id="continue" onclick="flip(); attackForm();">Flip</button>
+<button id="continue" onclick="flip(); attackForm(); nextButtonA(); ">Flip</button>
 <button onclick="nextButtonA(); nextButtonB(); attackForm(); chooseMove(); flip();">Next</button>
 
 

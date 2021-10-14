@@ -5,6 +5,13 @@
     <title>{% block title %}Pokemon{% endblock %}</title>
     <link rel="stylesheet"
           href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+    <style>
+    body {
+    background-image: url('static/pokemon-in-the-wild.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+</style>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-primary mb-4">
@@ -15,14 +22,6 @@
     <a class="navbar-brand" href="/rules"> How To Play </a>
     <a class="navbar-dark" href="/test">Nothing Here</a>
 </nav>
-
-<style>
-    body {
-    background-image: url('static/pokemon-in-the-wild.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    }
-</style>
 
 <div>
     {% block content %}{% endblock %}

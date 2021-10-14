@@ -37,8 +37,7 @@ def game():
             option = 'Attacker'
         elif turn == var.player_2:
             option = 'Defender'
-        print(option)
-        return render_template('game_template.html', type1=type1, type2=type2, card=card, option=option)
+        return render_template('game_template.html', type1=type1, type2=type2, card=card)
 
 
 @app.route("/cardBack")
@@ -74,13 +73,14 @@ def cardFlipB():
                            typeB1=type1, typeB2=type2, counter2=var.player_2.counter, remaining2=remaining_b)
     return render_template('game_template.html', type1=type1, type2=type2)
 
+
 @app.route("/turnChoice")
 def turn_choice():
-    turn=var.choose_attacker()
-    if turn == var.player_1:
+    global var
+    if var.attacker.player_no == 1:
         option = 'Attacker'
         return render_template('turn.html', option=option)
-    elif turn == var.player_2:
+    elif var.defender.player_no == 1:
         option = 'Defender'
         return render_template('turn.html', option=option)
 
@@ -218,6 +218,7 @@ def attack_pokemons():
     #     print('Hmm... looks like its a draw')
     return make_response('Hello!')
 
+
 @app.route("/updateForm")
 def update_form():
     database = Database()
@@ -237,6 +238,7 @@ def show_pokemons():
     return render_template('card.html', names=names_list, name=data_list[0][1], art=data_list[0][2],
                            attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5],
                            type2=data_list[0][6])
+
 
 @app.route("/rules")
 def game_rules():
