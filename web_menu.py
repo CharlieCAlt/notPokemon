@@ -208,14 +208,15 @@ def download_pokemons():
 def attack_pokemons():
     choice=request.args.get('attackType')
     print(choice)
-    # game=Game()
-    # result=game.attack(choice)
-    # if result == 'won':
-    #     pass
-    # elif result == 'lost':
-    #     pass
-    # else:
-    #     print('Hmm... looks like its a draw')
+    game=Game()
+    result=var.attack(choice)
+    print(result)
+    if result == 'won':
+        pass
+    elif result == 'lost':
+        pass
+    else:
+        print('Hmm... looks like its a draw')
     return make_response('Hello!')
 
 
@@ -241,12 +242,14 @@ def show_pokemons():
 
 @app.route("/damageRelations")
 def damage_relations():
+    database=Database()
     types = database.get_all_types()
     types_list = types.values.tolist()
     return render_template('damageRelations.html', types=types_list)
 
 @app.route("/showDamageRelations")
 def show_damage_relations():
+    database=Database()
     types = database.get_all_types()
     types_list = types.values.tolist()
     name = request.args.get('name')

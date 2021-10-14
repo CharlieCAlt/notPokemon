@@ -7,8 +7,8 @@ import requests
 import sqlite3
 
 
-
 class Game:
+
 
     def __init__(self):
         database = Database()
@@ -27,6 +27,7 @@ class Game:
         self.defender = None
         self.finished = False
 
+
     def choose_attacker(self):
         number = np.random.randint(1,3)
         if number == 1:
@@ -36,6 +37,7 @@ class Game:
             self.attacker = self.player_2
             self.defender = self.player_1
         return self.attacker
+
 
     def attack(self, type_attacker):
         attacker = self.attacker
@@ -61,6 +63,7 @@ class Game:
             self.defender = attacker
         return result
 
+
     def get_types(self, player):
         types = self.deck.get_types(player.deck, self.deck.counter)
         return types[0], types[1]
@@ -76,12 +79,14 @@ class Game:
             self.finished = True
         return winner
 
+
     def damageModifier(self, attackerType, defenseType1, defenseType2):
         url = self.typeURL(attackerType)
         defenseType = [defenseType1, defenseType2]
         modifier = self.calculateModifier(url, defenseType)
         modifier /= 10
         return modifier
+
 
     def typeURL(self, attackerType):
         typeUrl = None
@@ -93,6 +98,7 @@ class Game:
             if typeName == attackerType:
                 typeUrl = type["url"]
         return typeUrl
+
 
     def calculateModifier(self, typeUrl, defenseType):
         dmgModifier = int(10)
@@ -113,6 +119,4 @@ class Game:
                 if dType in typeName.values():
                     dmgModifier *= 0
         return dmgModifier
-
-
 

@@ -4,6 +4,7 @@ from sqlite3 import Error
 import config
 
 class Database:
+
     def __init__(self):
         try:
             self.conn = sqlite3.connect(config.DATABASE, check_same_thread=False)
