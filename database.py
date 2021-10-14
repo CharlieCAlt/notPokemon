@@ -87,8 +87,8 @@ class Database:
         self.cursor.execute(query)
         self.conn.commit()
 
-    def get_attack(self, deck, counter):
-        pokemon_find = deck[counter]
+    def get_attack(self, deck):
+        pokemon_find = deck[0]
         find_pokemon = """
                     SELECT Attack
                     FROM Pokedex
@@ -98,8 +98,8 @@ class Database:
         data = self.cursor.fetchone()
         return data
 
-    def get_defense(self, deck, counter):
-        pokemon_find = deck[counter]
+    def get_defense(self, deck):
+        pokemon_find = deck[0]
         find_pokemon = """
                     SELECT Defense
                     FROM Pokedex
@@ -109,8 +109,8 @@ class Database:
         data = self.cursor.fetchone()
         return data
 
-    def get_types(self, deck, counter):
-        pokemon_find = deck[counter]
+    def get_types(self, deck):
+        pokemon_find = deck[0]
         find_pokemon = """
                     SELECT Type1, Type2
                     FROM Pokedex

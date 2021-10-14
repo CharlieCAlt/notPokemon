@@ -13,7 +13,7 @@ class TestBattles:
         game = Game()
         game.choose_attacker()
         attacking_player = game.attacker
-        result = game.attack()
+        result = game.attack('bug')
         attacking_player_after = game.attacker
         if result == 'win':
             assert attacking_player == attacking_player_after
