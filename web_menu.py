@@ -136,6 +136,13 @@ def download_pokemons():
     var.player_2.deck = deck_b
     return render_template('pokedex.html', names=names_list, alert=alert)
 
+@app.route("/attackPokemon")
+def attack_pokemons():
+    print('Is this thing on?')
+    choice=request.args.get('types')
+    print(choice)
+    return render_template('Game_Rules.html')
+
 
 @app.route("/showPokemons")
 def show_pokemons():

@@ -100,10 +100,10 @@ function pauseAudio() {
 
 <div class="container" id="cardset">
     <div class="row">
-        <div class="col-md-6 col-lg-3">
+        <div class="col-md-6 col-lg-4">
             <div id="cardA"></div>
         </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-4">
                 <div id="cardB"></div>
         </div>
     </div>
@@ -119,16 +119,18 @@ function pauseAudio() {
 <!--    </div>-->
     <div class=" column horizontal-centre">
         <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
-        <form action="submitscript.php" target="dummyframe">
-            <label> Choose an attack type: </label>
+        <form action= "/attackPokemon" target="dummyframe">
+            <label for="types"> Choose an attack type: </label>
             <select name="types" id="types" required>
                 <option value="">None</option>
                 <option value="{{type1}}" id="initialType"></option>
                 <option value="{{type2}}" id="secondType"></option>
             </select>
-            <input class="bg-primary" type="submit" value="Attack" onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()">
+            <input class="bg-primary" type="submit" value="Attack" onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()" >
         </form>
     </div>
 </div>
 
+
+<!--onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()"-->
 {% endblock %}
