@@ -3,17 +3,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-  function nextButtonA() {
-    $.ajax({
-        url: "/cardStatsA",
-        type: "get",
-        data: {},
-        success: function(response) {
-          $("#cardA").html(response)
-        },
-        error: function(err) {}
-    });
-  }
   attackForm();
 </script>
 

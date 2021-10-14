@@ -120,6 +120,11 @@
 <!--         error: function(err) {}-->
 <!--    });-->
 <!-- }-->
+ function hide() {
+    var x = document.getElementById("start");
+        x.style.display = "none";
+ }
+
 </script>
 
 
@@ -142,9 +147,10 @@ function pauseAudio() {
 </script>
 
 
-<div class="container">
+<div id="start" class="container">
     <div class="horizontal-centre">
-        <a onclick="start(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="start(); first_pokemon_type(); second_pokemon_type(); hide()"
+           class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -163,7 +169,7 @@ function pauseAudio() {
 <div class="margin:10px"></div>
 <div class="container" id="attackForm"></div>
 
-<button onclick="nextButtonA(); nextButtonB()">Next</button>
+<button onclick="start()">Next</button>
 
 
 {% endblock %}

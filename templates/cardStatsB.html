@@ -2,20 +2,6 @@
 {% block content %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-  function nextButtonB() {
-    $.ajax({
-        url: "/cardStatsB",
-        type: "get",
-        data: {},
-        success: function(response) {
-          $("#cardB").html(response)
-        },
-        error: function(err) {}
-    });
-  }
-</script>
-
 
 <div class="container" id="cardset">
     <div class="card bg-danger text-white">
