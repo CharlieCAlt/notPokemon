@@ -54,5 +54,38 @@ def getPokemon(database):
         else:
             pass
 
+def typeURL(name):
+    typeUrl = None
+    r = requests.get("https://pokeapi.co/api/v2/type/")
+    response = r.json()
+    results = response["results"]
+    for item in results:
+        if item['name'] == name:
+            typeUrl = item["url"]
+    return typeUrl
 
+
+def get_relations_types(typeUrl):
+    r = requests.get(typeUrl)
+    response = r.json()
+    results = response["damage_relations"]
+    double_damage_to_dict = results["double_damage_to"]
+    half_damage_to_dict = results["half_damage_to"]
+    no_damage_to_dict = results["no_damage_to"]
+    double_damage_from_dict = results["double_damage_from"]
+    half_damage_from_dict = results["half_damage_from"]
+    no_damage_from_dict = results["no_damage_from"]
+    double_damage_to = loop_dict(double_damage_to_dict)
+    half_damage_to = loop_dict(half_damage_to_dict)
+    no_damage_to = loop_dict(no_damage_to_dict)
+    double_damage_from = loop_dict(double_damage_from_dict)
+    half_damage_from = loop_dict(half_damage_from_dict)
+    no_damage_from = loop_dict(no_damage_from_dict)
+    return double_damage_to, half_damage_to, no_damage_to, double_damage_from, half_damage_from, no_damage_from
+
+def loop_dict(dict):
+    return_list = []
+    for typeName in dict:
+        return_list.append(typeName['name'])
+    return return_list
 
