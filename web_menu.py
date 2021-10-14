@@ -1,5 +1,5 @@
 from deck import Deck
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, make_response
 from database import Database
 import pokemon_download
 from game_engine.game import Game
@@ -73,6 +73,17 @@ def cardFlipB():
         return redirect(url_for('/winner', winner=winner))
     return render_template('cardStatsB.html', deck_b=var.player_2.deck, name2=name, attack2=attack, defense2=defense,
                            typeB1=type1, typeB2=type2, counter2=var.player_2.counter, remaining2=remaining_b)
+    return render_template('game_template.html', type1=type1, type2=type2)
+
+@app.route("/turnChoice")
+def turn_choice():
+    turn=var.choose_attacker()
+    if turn == var.player_1:
+        option = 'Attacker'
+        return render_template('turn.html', option=option)
+    elif turn == var.player_2:
+        option = 'Defender'
+        return render_template('turn.html', option=option)
 
 
 @app.route("/startA")
@@ -151,12 +162,14 @@ def cardB():
 def test():
     return render_template('test.html')
 
+
 @app.route("/initial_pokemon_type")
 def find_initial_type():
     database = Database()
     values = database.pokemonData(var.player_1.deck, var.player_1.counter)
     name, attack, defense, type1, type2 = values
     return render_template('initial_pokemon_type.html' , initial_pokemon_type=type1)
+
 
 @app.route("/second_pokemon_type")
 def find_second_type():
@@ -191,12 +204,27 @@ def download_pokemons():
     var.player_2.deck = deck_b
     return render_template('pokedex.html', names=names_list, alert=alert)
 
+
 @app.route("/attackPokemon")
 def attack_pokemons():
-    print('Is this thing on?')
-    choice=request.args.get('types')
+    choice=request.args.get('attackType')
     print(choice)
-    return render_template('Game_Rules.html')
+    # game=Game()
+    # result=game.attack(choice)
+    # if result == 'won':
+    #     pass
+    # elif result == 'lost':
+    #     pass
+    # else:
+    #     print('Hmm... looks like its a draw')
+    return make_response('Hello!')
+
+@app.route("/updateForm")
+def update_form():
+    database = Database()
+    values = database.pokemonData(var.player_1.deck, var.player_1.counter)
+    name, attack, defense, type1, type2 = values
+    return render_template('attack_form.html', type1=type1,type2=type2)
 
 
 @app.route("/showPokemons")

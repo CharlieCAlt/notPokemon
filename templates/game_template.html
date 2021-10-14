@@ -6,8 +6,8 @@
 <div class="container body-content" xmlns="http://www.w3.org/1999/html">
     <div class="jumbotron bg-warning text-center" id="home">
         <h1>Pokemon: The Game</h1>
-        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life.<br>
-         This round you are the {{option}} </p>
+        <p>Get Ready to take on your opponent! This is the start of your journey, the beginning of the rest of your life.</p>
+        <div id="yourMove"></div>
     </div>
 </div>
 
@@ -94,6 +94,28 @@
          error: function(err) {}
     });
  }
+    function chooseMove() {
+    $.ajax({
+        url: "/turnChoice",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#yourMove").html(response)
+           },
+         error: function(err) {}
+    });
+ }
+     function attackForm() {
+    $.ajax({
+        url: "/updateForm",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#attackForm").html(response)
+           },
+         error: function(err) {}
+    });
+ }
 <!-- function winner() {-->
 <!--    $.ajax({-->
 <!--        url: "/winner",-->
@@ -129,7 +151,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -146,29 +168,12 @@ function pauseAudio() {
     </div>
 </div>
 
+<div class="margin:10px"></div>
 
-<div class="container">
-<!--    <div class="column horizontal-centre">-->
-<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB(); first_pokemon_type()"> Attack using <div id="initial_pokemon_type"></div> </button>-->
-<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>-->
-<!--        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>-->
-<!--        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>-->
-<!--    </div>-->
-    <div class=" column horizontal-centre">
-        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
-        <form action= "/attackPokemon" target="dummyframe">
-            <label for="types"> Choose an attack type: </label>
-            <select name="types" id="types" required>
-                <option value="">None</option>
-                <option value="{{type1}}" id="initialType"></option>
-                <option value="{{type2}}" id="secondType"></option>
-            </select>
-            <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip();">
-            <button id="continue" onclick="flip();">Continue</button>
-        </form>
-    </div>
-</div>
-<div style="margin:10px;"></div>
+<div class="container" id="attackForm"></div>
 
-<!--onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()"-->
+<button id="continue" onclick="flip(); attackForm();">Flip</button>
+<button onclick="nextButtonA(); nextButtonB(); attackForm(); chooseMove(); flip();">Next</button>
+
+
 {% endblock %}

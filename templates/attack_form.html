@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="column horizontal-centre">
+        <div class="jumbotron width:100px">
+        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
+        <form action= "/attackPokemon" target="dummyframe" method="get">
+            <label for="types"> Choose an attack type: </label>
+            <select name="attackType" id="types" required>
+                <option value="">None</option>
+                <option value="{{type1}}" id="initialType">{{type1}}</option>
+                <option value="{{type2}}" id="secondType">{{type2}}</option>
+            </select>
+            <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); show()">
+        </form>
+        </div>
+    </div>
+</div>
