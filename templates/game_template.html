@@ -24,7 +24,7 @@
 
 
 <script>
-  function startButton1() {
+  function startA() {
     $.ajax({
         url: "/startA",
         type: "get",
@@ -35,7 +35,7 @@
         error: function(err) {}
     });
   }
-  function startButton2() {
+  function startB() {
     $.ajax({
         url: "/startB",
         type: "get",
@@ -46,7 +46,32 @@
         error: function(err) {}
     });
   }
-
+  function flipA() {
+    $.ajax({
+        url: "/flipA",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#cardA").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+  function flipB() {
+    $.ajax({
+        url: "/flipB",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#cardB").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+  function flip() {
+    flipA();
+    flipB();
+  }
    function first_pokemon_type() {
     $.ajax({
         url: "/initial_pokemon_type",
@@ -104,7 +129,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startButton1(); startButton2(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -114,8 +139,8 @@ function pauseAudio() {
         <div class="col-md-6 col-lg-4">
             <div id="cardA"></div>
         </div>
-            <div class="col-md-6 col-lg-4">
-                <div id="cardB"></div>
+        <div class="col-md-6 col-lg-4">
+            <div id="cardB"></div>
         </div>
     </div>
 </div>
@@ -138,7 +163,8 @@ function pauseAudio() {
                 <option value="{{type1}}" id="initialType"></option>
                 <option value="{{type2}}" id="secondType"></option>
             </select>
-            <input class="bg-primary" type="submit" value="Attack" >
+            <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); show()">
+            <button id="continue" onclick="flip()">Continue</button>
         </form>
             <button onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type(); chooseMove()">Continue?</button>
         </div>
