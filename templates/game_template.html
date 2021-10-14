@@ -72,15 +72,6 @@
     flipA();
     flipB();
   }
-  function show() {
-    var x = document.getElementById("continue");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-  }
-
    function first_pokemon_type() {
     $.ajax({
         url: "/initial_pokemon_type",
@@ -153,30 +144,6 @@ function pauseAudio() {
 <!--    </div>-->
     <div class=" column horizontal-centre">
         <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
-        <form action="submitscript.php" target="dummyframe">
-            <label> Choose an attack type: </label>
-            <select name="types" id="types" required>
-                <option value="">None</option>
-                <option value="{{type1}}">{{type1}}</option>
-                <option value="{{type2}}">{{type2}}</option>
-            </select>
-            <input type="submit" value="Attack" onclick="flip(); show();">
-            <button id="continue" onclick="flip()">Continue</button>
-        </form>
-    </div>
-</div>
-
-
-<div style="margin:10px;"></div>
-
-
-<div class="container body-content" xmlns="http://www.w3.org/1999/html">
-    <div class="jumbotron bg-success text-white text-center">
-        <h1>Game Rules</h1>
-        <p class="lead">You will be playing against an AI opponent. <br> Each player has a deck of pokemon, equally split between them. <br>
-            The aim is to take all of the cards from your opponent, completing your pokedex. </p>
-    <div class=" column horizontal-centre">
-        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
         <form action= "/attackPokemon" target="dummyframe">
             <label for="types"> Choose an attack type: </label>
             <select name="types" id="types" required>
@@ -184,11 +151,12 @@ function pauseAudio() {
                 <option value="{{type1}}" id="initialType"></option>
                 <option value="{{type2}}" id="secondType"></option>
             </select>
-            <input class="bg-primary" type="submit" value="Attack" onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()" >
+            <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); show()">
+            <button id="continue" onclick="flip()">Continue</button>
         </form>
     </div>
 </div>
-
+<div style="margin:10px;"></div>
 
 <!--onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()"-->
 {% endblock %}
