@@ -46,6 +46,10 @@
         error: function(err) {}
     });
   }
+  function start() {
+    startA();
+    startB();
+  }
   function flipA() {
     $.ajax({
         url: "/flipA",
@@ -94,18 +98,7 @@
          error: function(err) {}
     });
  }
-    function chooseMove() {
-    $.ajax({
-        url: "/turnChoice",
-        type: "get",
-        data: {},
-        success: function(response) {
-            $("#yourMove").html(response)
-           },
-         error: function(err) {}
-    });
- }
-     function attackForm() {
+ function attackForm() {
     $.ajax({
         url: "/updateForm",
         type: "get",
@@ -151,7 +144,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="start(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -167,13 +160,10 @@ function pauseAudio() {
         </div>
     </div>
 </div>
-
 <div class="margin:10px"></div>
-
 <div class="container" id="attackForm"></div>
 
-<button id="continue" onclick="flip(); attackForm();">Flip</button>
-<button onclick="nextButtonA(); nextButtonB(); attackForm(); chooseMove(); flip();">Next</button>
+<button onclick="nextButtonA(); nextButtonB()">Next</button>
 
 
 {% endblock %}
