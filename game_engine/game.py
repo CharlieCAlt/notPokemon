@@ -43,29 +43,30 @@ class Game:
         attacker = self.attacker
         defender = self.defender
         deck = self.deck
-        attack = deck.get_attack(attacker.deck, attacker.counter)[0]
-        defense = deck.get_defense(defender.deck, defender.counter)[0]
+        attack = deck.get_attack(attacker.deck)[0]
+        defense = deck.get_defense(defender.deck)[0]
         # Need the player to choose a type for attacker
         type_defender, type_defender1 = self.get_types(self.defender)
         damage_modifier = self.damageModifier(type_attacker, type_defender, type_defender1)
         attack *= damage_modifier
         if attack > defense:
             result = 'won'
-            attacker.deck.append(defender.deck[defender.counter])
-            del defender.deck[defender.counter]
-            attacker.counter += 1
+            attacker.deck.append(defender.deck[0])
+            del defender.deck[0]
+            attacker.deck.append(attacker.deck[0])
+            del attacker.deck[0]
         else:
             result = 'lost'
-            defender.deck.append(attacker.deck[attacker.counter])
-            del attacker.deck[attacker.counter]
-            defender.counter += 1
+            defender.deck.append(attacker.deck[0])
+            del attacker.deck[0]
+            defender.deck.append(defender.deck[0])
+            del defender.deck[0]
             self.attacker = defender
             self.defender = attacker
         return result
 
-
     def get_types(self, player):
-        types = self.deck.get_types(player.deck, self.deck.counter)
+        types = self.deck.get_types(player.deck)
         return types[0], types[1]
 
 
@@ -79,14 +80,12 @@ class Game:
             self.finished = True
         return winner
 
-
     def damageModifier(self, attackerType, defenseType1, defenseType2):
         url = self.typeURL(attackerType)
         defenseType = [defenseType1, defenseType2]
         modifier = self.calculateModifier(url, defenseType)
         modifier /= 10
         return modifier
-
 
     def typeURL(self, attackerType):
         typeUrl = None
@@ -98,7 +97,6 @@ class Game:
             if typeName == attackerType:
                 typeUrl = type["url"]
         return typeUrl
-
 
     def calculateModifier(self, typeUrl, defenseType):
         dmgModifier = int(10)
@@ -119,4 +117,6 @@ class Game:
                 if dType in typeName.values():
                     dmgModifier *= 0
         return dmgModifier
+
+
 
