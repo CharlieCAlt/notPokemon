@@ -1,0 +1,105 @@
+{% extends "game_layout.html" %}
+{% block title %}Home page{% endblock %}
+{% block content %}
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Pokedex</title>
+</head>
+
+<body>
+
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+    <div class="jumbotron bg-warning text-center" id="home">
+        <h1>Damage Relations</h1>
+    </div>
+</div>
+
+<br>
+
+<div class="container body-content" xmlns="http://www.w3.org/1999/html">
+<form action="/showDamageRelations" method="get">
+<label>Choose a pokemon:</label>
+  <select name="name">
+    {% for item in types %}
+    <option value="{{item[0]}}">{{item[0]}}</option>
+    {% endfor %}
+  </select>
+<input type="submit"/>
+</form>
+
+
+    <table id = "customers">
+        <TR>
+            <TH> Type </TH>
+            <TD>{{name}}</TD>
+        </TR>
+        <TR>
+            <TH>Double damage to</TH>
+            {%for item in double_damage_to%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>Half damage to</TH>
+            {%for item in half_damage_to%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>No damage to</TH>
+            {%for item in no_damage_to%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>Double damage from</TH>
+            {%for item in double_damage_from%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>Half damage from</TH>
+            {%for item in half_damage_from%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+        <TR>
+            <TH>No damage from</TH>
+            {%for item in no_damage_from%}
+            <TD> {{item}} </TD>
+            {% endfor %}
+        </TR>
+    </table>
+</div>
+
+
+</body>
+{% endblock %}

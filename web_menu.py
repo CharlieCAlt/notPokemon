@@ -133,5 +133,20 @@ def show_pokemons():
                            attack=data_list[0][3], defense=data_list[0][4], type1=data_list[0][5],
                            type2=data_list[0][6])
 
+@app.route("/damageRelations")
+def damage_relations():
+    types = database.get_all_types()
+    types_list = types.values.tolist()
+    return render_template('damageRelations.html', types=types_list)
+
+@app.route("/showDamageRelations")
+def show_damage_relations():
+    types = database.get_all_types()
+    types_list = types.values.tolist()
+    name = request.args.get('name')
+    url = pokemon_download.typeURL(name)
+    double_damage_to, half_damage_to, no_damage_to, double_damage_from, half_damage_from, no_damage_from = pokemon_download.get_relations_types(url)
+    return render_template('damageRelations.html', double_damage_to=double_damage_to, half_damage_to=half_damage_to, no_damage_to=no_damage_to,
+                           double_damage_from=double_damage_from, half_damage_from=half_damage_from, no_damage_from=no_damage_from, types=types_list, name=name)
 
 if __name__ == "__main__": app.run()

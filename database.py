@@ -120,6 +120,16 @@ class Database:
         data = self.cursor.fetchone()
         return data
 
+    def get_all_types(self):
+        get_types = """
+                    SELECT Type1
+                    FROM Pokedex
+                    UNION
+                    SELECT Type2
+                    FROM Pokedex
+                    """
+        data = pd.read_sql_query(get_types, self.conn)
+        return data
 
 
 
