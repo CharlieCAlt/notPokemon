@@ -208,6 +208,14 @@ def download_pokemons():
 def attack_pokemons():
     choice=request.args.get('attackType')
     print(choice)
+    # game=Game()
+    # result=game.attack(choice)
+    # if result == 'won':
+    #     pass
+    # elif result == 'lost':
+    #     pass
+    # else:
+    #     print('Hmm... looks like its a draw')
     return make_response('Hello!')
 
 @app.route("/updateForm")

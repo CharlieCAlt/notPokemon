@@ -156,11 +156,12 @@ function pauseAudio() {
     </div>
 </div>
 
+<div class="margin:10px"></div>
 
 <div class="container" id="attackForm"></div>
 
-<button id="continue" onclick="flip(); attackForm();">Continue</button>
-<button onclick="nextButtonA(); nextButtonB(); attackForm();">Next</button>
+<button id="continue" onclick="flip(); attackForm();">Flip</button>
+<button onclick="nextButtonA(); nextButtonB(); attackForm(); chooseMove(); flip();">Next</button>
 
 
 {% endblock %}
