@@ -48,8 +48,8 @@ class Database:
         self.cursor.execute(addition, input_data)
         self.conn.commit()
 
-    def pokemonData(self, deck, counter):
-        pokemon_find = deck[counter]
+    def pokemonData(self, deck):
+        pokemon_find = deck[0]
         find_pokemon = """
             SELECT Name, Attack, Defense, Type1, Type2
             FROM Pokedex

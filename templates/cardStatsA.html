@@ -3,17 +3,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
-  function nextButtonA() {
-    $.ajax({
-        url: "/cardStatsA",
-        type: "get",
-        data: {},
-        success: function(response) {
-          $("#cardA").html(response)
-        },
-        error: function(err) {}
-    });
-  }
+  attackForm();
 </script>
 
 <div class="container" id="cardset">
@@ -22,7 +12,7 @@
             <img class="card-img-top" src="static/blank_card.jpg" alt="card go here" style="width:100%; height:395px">
             <div class="card-img-overlay">
                 <p class="text-left text-dark"> Cards left: {{remaining1}}</p>
-                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_a[counter1]}}.png" width ="165" height ="165"/>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_a[0]}}.png" width ="165" height ="165"/>
                 <h3 class="card-title text-center text-dark"> {{name}}</h3>
                 <p class="text-center text-dark"> Attack: {{attack}}</p>
                 <p class="text-center text-dark"> Defense: {{defense}}</p>

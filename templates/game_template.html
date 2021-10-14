@@ -46,6 +46,10 @@
         error: function(err) {}
     });
   }
+  function start() {
+    startA();
+    startB();
+  }
   function flipA() {
     $.ajax({
         url: "/flipA",
@@ -72,7 +76,7 @@
     flipA();
     flipB();
   }
-   function first_pokemon_type() {
+  function first_pokemon_type() {
     $.ajax({
         url: "/initial_pokemon_type",
         type: "get",
@@ -83,7 +87,7 @@
          error: function(err) {}
     });
  }
-    function second_pokemon_type() {
+ function second_pokemon_type() {
     $.ajax({
         url: "/second_pokemon_type",
         type: "get",
@@ -94,18 +98,7 @@
          error: function(err) {}
     });
  }
-    function chooseMove() {
-    $.ajax({
-        url: "/turnChoice",
-        type: "get",
-        data: {},
-        success: function(response) {
-            $("#yourMove").html(response)
-           },
-         error: function(err) {}
-    });
- }
-     function attackForm() {
+ function attackForm() {
     $.ajax({
         url: "/updateForm",
         type: "get",
@@ -116,6 +109,22 @@
          error: function(err) {}
     });
  }
+<!-- function winner() {-->
+<!--    $.ajax({-->
+<!--        url: "/winner",-->
+<!--        type: "get",-->
+<!--        data: {},-->
+<!--        success: function(response) {-->
+<!--            $("#winner").html(response)-->
+<!--           },-->
+<!--         error: function(err) {}-->
+<!--    });-->
+<!-- }-->
+ function hide() {
+    var x = document.getElementById("start");
+        x.style.display = "none";
+ }
+
 </script>
 
 
@@ -140,10 +149,12 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startA(); startB(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="start(); first_pokemon_type(); second_pokemon_type(); hide()"
+           class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
+<div id="winner"></div>
 
 <div class="container" id="cardset">
     <div class="row">
@@ -155,13 +166,10 @@ function pauseAudio() {
         </div>
     </div>
 </div>
-
 <div class="margin:10px"></div>
-
 <div class="container" id="attackForm"></div>
 
-<button id="continue" onclick="flip(); attackForm(); nextButtonA(); ">Flip</button>
-<button onclick="nextButtonA(); nextButtonB(); attackForm(); chooseMove(); flip();">Next</button>
+<button onclick="start()">Next</button>
 
 
 {% endblock %}

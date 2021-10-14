@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+{% block content %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+  function randomAdjective() {
+    $.ajax({
+        url: "/adjective",
+        type: "get",
+        data: {},
+        success: function(response) {
+          $("#adjective").html(response)
+        },
+        error: function(err) {}
+    });
+  }
+  randomAdjective()
+</script>
+<div id="winner">
+    <p>AND THE WINNER, BY TOTAL KNOCK OUT IS</p>
+    <div id="adjective"></div>
+    <p>{{winner}}</p>
+</div>
+
+{% endblock %}
