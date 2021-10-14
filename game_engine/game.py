@@ -7,14 +7,15 @@ import requests
 import sqlite3
 
 
+
 class Game:
 
     def __init__(self):
         database = Database()
-        # try:
-        #     database.delete_table()
-        # except sqlite3.OperationalError:
-        #     pass
+        try:
+            database.delete_table()
+        except sqlite3.OperationalError:
+            pass
         database.createTables()
         self.deck = Deck()
         deck_a, deck_b = self.deck.shuffle()
@@ -27,7 +28,7 @@ class Game:
         self.finished = False
 
     def choose_attacker(self):
-        number = np.random.randint(1, 3)
+        number = np.random.randint(1,3)
         if number == 1:
             self.attacker = self.player_1
             self.defender = self.player_2
@@ -36,14 +37,13 @@ class Game:
             self.defender = self.player_1
         return self.attacker
 
-    def attack(self):
+    def attack(self, type_attacker):
         attacker = self.attacker
         defender = self.defender
         deck = self.deck
         attack = deck.get_attack(attacker.deck, attacker.counter)[0]
         defense = deck.get_defense(defender.deck, defender.counter)[0]
         # Need the player to choose a type for attacker
-        type_attacker, type_attacker1 = self.get_types(self.attacker)
         type_defender, type_defender1 = self.get_types(self.defender)
         damage_modifier = self.damageModifier(type_attacker, type_defender, type_defender1)
         attack *= damage_modifier
