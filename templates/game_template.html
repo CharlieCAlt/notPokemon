@@ -105,6 +105,17 @@
          error: function(err) {}
     });
  }
+     function attackForm() {
+    $.ajax({
+        url: "/updateForm",
+        type: "get",
+        data: {},
+        success: function(response) {
+            $("#attackForm").html(response)
+           },
+         error: function(err) {}
+    });
+ }
 </script>
 
 
@@ -129,7 +140,7 @@ function pauseAudio() {
 
 <div class="container">
     <div class="horizontal-centre">
-        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
+        <a onclick="startA(); startB(); first_pokemon_type(); second_pokemon_type(); chooseMove(), style.display='none'" class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
@@ -146,31 +157,10 @@ function pauseAudio() {
 </div>
 
 
-<div class="container">
-<!--    <div class="column horizontal-centre">-->
-<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB(); first_pokemon_type()"> Attack using <div id="initial_pokemon_type"></div> </button>-->
-<!--        <button class="bg-warning" onclick="nextButtonA(); nextButtonB()"> Attack using {{type2}} </button>-->
-<!--        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>-->
-<!--        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>-->
-<!--    </div>-->
-    <div class="column horizontal-centre">
-        <div class="jumbotron width:100px">
-        <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
-        <form action= "/attackPokemon" target="dummyframe">
-            <label for="types"> Choose an attack type: </label>
-            <select name="types" id="types" required>
-                <option value="">None</option>
-                <option value="{{type1}}" id="initialType"></option>
-                <option value="{{type2}}" id="secondType"></option>
-            </select>
-            <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); show()">
-            <button id="continue" onclick="flip()">Continue</button>
-        </form>
-            <button onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type(); chooseMove()">Continue?</button>
-        </div>
-    </div>
-</div>
+<div class="container" id="attackForm"></div>
+
+<button id="continue" onclick="flip(); attackForm();">Continue</button>
+<button onclick="nextButtonA(); nextButtonB(); attackForm();">Next</button>
 
 
-<!--onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()"-->
 {% endblock %}
