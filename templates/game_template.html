@@ -117,7 +117,8 @@ function pauseAudio() {
 <!--        <button class="bg-warning" onclick="playAudio()" type="button">Play Audio</button>-->
 <!--        <button class="bg-primary" onclick="pauseAudio()" type="button">Pause Audio</button>-->
 <!--    </div>-->
-    <div class=" column horizontal-centre">
+    <div class="column horizontal-centre">
+        <div class="jumbotron width:100px">
         <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
         <form action= "/attackPokemon" target="dummyframe">
             <label for="types"> Choose an attack type: </label>
@@ -126,8 +127,10 @@ function pauseAudio() {
                 <option value="{{type1}}" id="initialType"></option>
                 <option value="{{type2}}" id="secondType"></option>
             </select>
-            <input class="bg-primary" type="submit" value="Attack" onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()" >
+            <input class="bg-primary" type="submit" value="Attack" >
         </form>
+            <button onclick="nextButtonA(); nextButtonB(); first_pokemon_type(); second_pokemon_type()">Continue?</button>
+        </div>
     </div>
 </div>
 

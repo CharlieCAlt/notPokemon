@@ -138,7 +138,6 @@ def download_pokemons():
 
 @app.route("/attackPokemon")
 def attack_pokemons():
-    print('Is this thing on?')
     choice=request.args.get('types')
     print(choice)
     return render_template('Game_Rules.html')
