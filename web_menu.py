@@ -179,7 +179,7 @@ def attack_pokemons():
         pass
     else:
         print('Hmm... looks like its a draw')
-    return make_response('Hello!')
+    return make_response('Hello!', 200)
 
 
 @app.route("/updateForm")
