@@ -179,15 +179,17 @@ def attack_pokemons():
         pass
     else:
         print('Hmm... looks like its a draw')
-    return make_response('Hello!', 200)
+    return make_response('Hello!')
 
 
 @app.route("/updateForm")
 def update_form():
+    global var
     database = Database()
     values = database.pokemonData(var.player_1.deck)
     name, attack, defense, type1, type2 = values
-    return render_template('attack_form.html', type1=type1, type2=type2)
+    turn = var.attacker.player_no
+    return render_template('attack_form.html', type1=type1, type2=type2, turn=turn)
 
 
 @app.route("/showPokemons")
