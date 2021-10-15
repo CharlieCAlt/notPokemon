@@ -1,23 +1,25 @@
 
 
 {% if turn == 1: %}
-    <div class="container">
-        <div class="column horizontal-centre">
-            <div class="card-block text-center">
-                <div class="jumbotron">
-                    <h1>You Won! <br> Go Again!</h1>
+    <div class="container" id="cardset">
+        <div class="column horizontal-center">
+            <div class="card-block text-center bg-info">
+                <div class="jumbotron bg-info">
+                    <h2>You Won! <br> Go Again!</h2>
                 <img class="card-img-top" src="static/pokemon-pikachu.gif" alt="Happy Pikka">
             <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
             <form action= "/attackPokemon" target="dummyframe" method="get">
-                <label for="types"> Choose an attack type: </label>
+                <label for="types"> <strong>Choose an attack type:</strong></label>
                 <select name="attackType" id="types" required>
                     <option value="">Pick Attack Type</option>
-                    <option value="{{type1}}" id="initialType">{{type1}}</option>
-                    <option value="{{type2}}" id="secondType">{{type2}}</option>
+                    <option value="{{type1}}" id="initialType" class="text-capitalize">{{type1}}</option>
+                    <option value="{{type2}}" id="secondType" class="text-capitalize">{{type2}}</option>
                 </select>
                 <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); attackForm()">
             </form>
                 <button onclick="start(); updateTurn(); attackForm()">Next</button>
+                    <button onclick="playAudio()">Play Audio</button>
+                    <button onclick="pauseAudio()">Pause Audio</button>
                 </div>
             </div>
         </div>
@@ -25,21 +27,22 @@
 {% endif %}
 {% if turn ==2: %}
     <div class="container">
-        <div class="column horisontal centre">
+        <div class="column horizontal centre">
                 <div class="card-block text-center">
-                <div class="jumbotron">
-                    <h1> You Lost! AI's Turn</h1>
+                <div class="jumbotron bg-info">
+                    <h2> You Lost! AI's Turn</h2>
                 <img class="card-img-top" src="https://c.tenor.com/lmA7VALYIAsAAAAC/sad-pikachu.gif" alt="Sad Pikka">
                 <iframe name="dummyframe2" id="dummyframe2" style="display:none;"></iframe>
             <form action= "/attackPokemon" target="dummyframe2" method="get">
-                <label for="types"> <strong>Click Continue to carry on</strong> </label>
+                <label for="types"> <strong>Click Continue, Next to carry on</strong> </label>
                 <select name="attackType" id="types2" required>
                     <option value="{{type1}}"> Continue </option>
                 </select>
                 <input class="bg-primary" type="submit" value="Continue" onclick="attackForm(); flip()">
             </form>
                 <button onclick="start(); updateTurn(); attackForm()">Next</button>
-<!--                <button onclick="flip()">Reveal</button>-->
+                                        <button onclick="playAudio()">Play Audio</button>
+                    <button onclick="pauseAudio()">Pause Audio</button>
             </div>
                 </div>
         </div>

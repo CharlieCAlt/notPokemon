@@ -158,6 +158,7 @@ def download_pokemons():
 
 @app.route("/attackPokemon")
 def attack_pokemons():
+    global var
     if var.attacker.player_no == 1:
         choice=request.args.get('attackType')
         print('Player 1 attacks with:')

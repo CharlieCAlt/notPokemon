@@ -4,16 +4,17 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <div class="container" id="cardset">
-    <div class="card bg-danger text-white">
+    <div class="card text-white">
         <div class="card-block text-center">
             <img class="card-img-top" src="static/blank_card.jpg" alt="card go here" style="width:100%; height:395px">
             <div class="card-img-overlay">
                 <p class="text-left text-dark"> Cards left: {{remaining2}}</p>
                 <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{deck_b[0]}}.png" width="165" height="165"/>
-                <h3 class="card-title text-center text-dark"> {{name2}} </h3>
-                <p class="text-centern text-dark"> Attack: {{attack2}} </p>
-                <p class="text-center text-dark"> Defense: {{defense2}} </p>
-                <p class="text-center text-dark"> Types: {{typeB1}}  {{typeB2}} </p>
+                <h3 class="card-title text-center text-dark text-capitalize"> {{name2}} </h3>
+                <br>
+                <p class="text-centern text-dark text-capitalize"> Attack: {{attack2}} </p>
+                <p class="text-center text-dark text-capitalize"> Defense: {{defense2}} </p>
+                <p class="text-center text-dark text-capitalize"> <strong>Types:</strong>{{typeB1}}  {{typeB2}} </p>
             </div>
         </div>
     </div>
