@@ -3,19 +3,22 @@
 {% if turn == 1: %}
     <div class="container">
         <div class="column horizontal-centre">
-            <div class="jumbotron width:100px">
+            <div class="card-block text-center">
+                <div class="jumbotron">
+                <img class="card-img-top" src="static/happy_pikachu.jpg" alt="Happy Pikka">
             <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
             <form action= "/attackPokemon" target="dummyframe" method="get">
                 <label for="types"> Choose an attack type: </label>
                 <select name="attackType" id="types" required>
-                    <option value="">None</option>
+                    <option value="">Pick Attack Type</option>
                     <option value="{{type1}}" id="initialType">{{type1}}</option>
                     <option value="{{type2}}" id="secondType">{{type2}}</option>
                 </select>
                 <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); attackForm()">
             </form>
-                <button onclick="start(); updateTurn()">Next</button>
-                <button onclick="flip()"> Reveal </button>
+                <button onclick="start(); updateTurn(); attackForm()">Next</button>
+<!--                <button onclick="flip()"> Reveal </button>-->
+                </div>
             </div>
         </div>
     </div>
@@ -23,18 +26,21 @@
 {% if turn ==2: %}
     <div class="container">
         <div class="column horisontal centre">
-            <div class="jumbotron">
+                <div class="card-block text-center">
+                <div class="jumbotron">
+                <img class="card-img-top" src="static/sad_pikachu.jpg" alt="Happy Pikka">
                 <iframe name="dummyframe2" id="dummyframe2" style="display:none;"></iframe>
             <form action= "/attackPokemon" target="dummyframe2" method="get">
-                <label for="types"> Choose an attack type: </label>
+                <label for="types"> <strong>Click Continue to carry on</strong> </label>
                 <select name="attackType" id="types2" required>
                     <option value="{{type1}}"> Continue </option>
                 </select>
                 <input class="bg-primary" type="submit" value="Continue" onclick="attackForm(); flip()">
             </form>
+                <button onclick="start(); updateTurn(); attackForm()">Next</button>
+<!--                <button onclick="flip()">Reveal</button>-->
             </div>
-            <button onclick="start(); updateTurn()">Next</button>
-            <button onclick="flip()">Reveal</button>
+                </div>
         </div>
     </div>
 {% endif %}
