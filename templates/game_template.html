@@ -146,6 +146,7 @@
 
 <script>
 var x = document.getElementById("gameAudio");
+x.volume = 0.2;
 
 function playAudio() {
   x.play();
@@ -160,12 +161,14 @@ function pauseAudio() {
 
 <div class="container" id="start">
     <div class="horizontal-centre">
-        <a onclick="start(); attackForm(); hide()"
+        <a onclick="start(); attackForm(); hide(); playAudio()"
            class="btn btn-danger text-white"> Start!</a>
     </div>
 </div>
 
+
 <div id="winner"></div>
+
 
 <div class="container" id="cardset">
     <div class="row">
@@ -177,10 +180,11 @@ function pauseAudio() {
         </div>
         <div class="col-md-6 col-lg-4">
             <div id="attackForm"></div>
-
         </div>
     </div>
 </div>
+
+
 <div class="margin:10px"></div>
 
 <!--<div class="container">-->

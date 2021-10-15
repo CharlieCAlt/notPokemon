@@ -5,7 +5,8 @@
         <div class="column horizontal-centre">
             <div class="card-block text-center">
                 <div class="jumbotron">
-                <img class="card-img-top" src="static/happy_pikachu.jpg" alt="Happy Pikka">
+                    <h1>You Won! <br> Go Again!</h1>
+                <img class="card-img-top" src="static/pokemon-pikachu.gif" alt="Happy Pikka">
             <iframe name="dummyframe" id="dummyframe" style="display:none;"></iframe>
             <form action= "/attackPokemon" target="dummyframe" method="get">
                 <label for="types"> Choose an attack type: </label>
@@ -17,7 +18,6 @@
                 <input class="bg-primary" type="submit" value="Attack" onclick="first_pokemon_type(); second_pokemon_type(); flip(); attackForm()">
             </form>
                 <button onclick="start(); updateTurn(); attackForm()">Next</button>
-<!--                <button onclick="flip()"> Reveal </button>-->
                 </div>
             </div>
         </div>
@@ -28,7 +28,8 @@
         <div class="column horisontal centre">
                 <div class="card-block text-center">
                 <div class="jumbotron">
-                <img class="card-img-top" src="static/sad_pikachu.jpg" alt="Happy Pikka">
+                    <h1> You Lost! AI's Turn</h1>
+                <img class="card-img-top" src="https://c.tenor.com/lmA7VALYIAsAAAAC/sad-pikachu.gif" alt="Sad Pikka">
                 <iframe name="dummyframe2" id="dummyframe2" style="display:none;"></iframe>
             <form action= "/attackPokemon" target="dummyframe2" method="get">
                 <label for="types"> <strong>Click Continue to carry on</strong> </label>
